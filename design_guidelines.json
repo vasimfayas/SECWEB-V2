@@ -1,0 +1,140 @@
+{
+  "brand": {
+    "name": "Shannon Engineering",
+    "domain": "Construction & Engineering Firm",
+    "tone": "Ultra modern, premium corporate, authoritative, precise, luxurious"
+  },
+  "theme": {
+    "primary_mode": "Dark + Light Blended",
+    "archetype": "5 (Jewel & Luxury) blended with 4 (Swiss & High-Contrast)",
+    "description": "Dark Navy and Steel Gray foundations to represent structural integrity and corporate strength. Bright white areas for clear reading (About/Services), punctuated by premium Gold and Orange accents for calls to action."
+  },
+  "color_palette": {
+    "primary": "#0A1128",
+    "secondary": "#2D3748",
+    "accent_gold": "#D4AF37",
+    "accent_orange": "#E67E22",
+    "background_dark": "#050A1F",
+    "background_light": "#F8F9FA",
+    "surface_dark": "#151C2F",
+    "surface_light": "#FFFFFF",
+    "text_light": "#F8F9FA",
+    "text_dark": "#0A1128",
+    "text_muted_dark": "#94A3B8",
+    "border_subtle": "rgba(255, 255, 255, 0.08)"
+  },
+  "typography": {
+    "heading_font": "Outfit, Cabinet Grotesk, sans-serif",
+    "body_font": "Manrope, Inter, sans-serif",
+    "rules": {
+      "h1": "text-5xl lg:text-7xl font-bold tracking-tighter text-white",
+      "h2": "text-3xl lg:text-5xl font-bold tracking-tight text-white",
+      "h3": "text-2xl lg:text-3xl font-semibold text-white",
+      "body": "text-base lg:text-lg leading-relaxed text-gray-300",
+      "overline": "text-sm uppercase tracking-[0.2em] text-[#D4AF37]"
+    }
+  },
+  "surfaces_and_shadows": {
+    "glass_nav": "backdrop-blur-xl bg-[#0A1128]/70 border-b border-white/10",
+    "card_dark": "bg-[#151C2F] border border-white/5 shadow-2xl transition-all duration-300 hover:border-[#D4AF37]/40 hover:-translate-y-1",
+    "card_light": "bg-white border border-gray-100 shadow-xl transition-all duration-300 hover:border-[#E67E22]/40 hover:-translate-y-1",
+    "image_overlay": "bg-black/50"
+  },
+  "layout_spacing": {
+    "section_padding": "py-24 lg:py-32",
+    "container": "max-w-7xl mx-auto px-6 lg:px-8",
+    "grid_bento": "grid grid-cols-1 md:grid-cols-8 lg:grid-cols-12 gap-6 lg:gap-8",
+    "grid_services": "grid grid-cols-1 md:grid-cols-3 gap-8"
+  },
+  "animations": {
+    "library": "framer-motion",
+    "hero_stagger": {
+      "container": "staggerChildren: 0.2, delayChildren: 0.3",
+      "item": "initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }"
+    },
+    "scroll_reveal": {
+      "initial": "{ opacity: 0, y: 40 }",
+      "whileInView": "{ opacity: 1, y: 0 }",
+      "viewport": "{ once: true, margin: '-100px' }",
+      "transition": "{ duration: 0.6, ease: 'easeOut' }"
+    }
+  },
+  "components": {
+    "header": "Sticky nav (z-50) using 'glass_nav'. Logo left, Links center, CTA right. Use framer-motion to slide down on load.",
+    "hero": "Relative h-screen. Video background absolute inset-0 z-0 object-cover. Scrim overlay 'bg-black/60' z-10. Content z-20 flex flex-col justify-center items-center text-center.",
+    "buttons": "Primary: bg-[#D4AF37] text-[#0A1128] font-bold hover:bg-[#E67E22] hover:scale-105 transition-all. Secondary: border border-white/20 hover:bg-white/10 backdrop-blur-sm text-white.",
+    "project_card": "Relative group overflow-hidden rounded-none. Image scales up on hover (scale-110 duration-700). Bottom gradient overlay (from-black/90 to-transparent) to ensure title legibility.",
+    "animated_counter": "Use Framer Motion useInView and useSpring to animate stats like '25+ Years', '500+ Projects'."
+  },
+  "pages": {
+    "Home": {
+      "sections": [
+        "Hero: Video background, staggered typography, scroll down indicator.",
+        "About Teaser: Asymmetrical layout. Left: Engineer image. Right: Text content + Timeline preview.",
+        "Services Overview: 3-column grid. Dark cards with gold icons.",
+        "Featured Projects: Interactive masonry or 2x2 grid. Hover states are critical.",
+        "CTA Section: Solid dark navy background with bold typography to contact."
+      ]
+    },
+    "About": {
+      "sections": [
+        "Header: Simple text hero with subtle dark blueprint texture.",
+        "Story/Mission: Split layout (Text + Image).",
+        "Timeline: Vertical line with intersection observer revealing milestones.",
+        "Team/Values: Grid of bento boxes."
+      ]
+    },
+    "Services": {
+      "sections": [
+        "Grid Expansion: Grid of services. Each card has a subtle hover lift. Click/Hover reveals more details (accordion style or height transition)."
+      ]
+    },
+    "Projects": {
+      "sections": [
+        "Filterable Gallery: Buttons to filter (All, Commercial, Residential, Infrastructure). React state filters the grid.",
+        "Project Cards: High-res images, title, category tag."
+      ]
+    },
+    "ProjectDetail": {
+      "sections": [
+        "Hero Image/Carousel: Swiper carousel or top hero image.",
+        "Info Strip: Grid showing Location, Year, Scope, Client.",
+        "Content: Rich description next to structural images.",
+        "Stats: Animated counters."
+      ]
+    },
+    "Contact": {
+      "sections": [
+        "Form: Modern Shadcn form, floating labels (or minimal bottom-border only), dark inputs.",
+        "Map/Info: Google Maps embed + Contact details with icon animations."
+      ]
+    }
+  },
+  "media_urls": {
+    "hero_video": "https://assets.mixkit.co/videos/preview/mixkit-crane-in-construction-site-4158-large.mp4",
+    "hero_fallback_image": "https://images.unsplash.com/photo-1758261785728-24fc44937941?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBjb25zdHJ1Y3Rpb24lMjBza3lzY3JhcGVyJTIwY3JhbmVzfGVufDB8fHx8MTc3NzgxNDQwN3ww&ixlib=rb-4.1.0&q=85",
+    "about_engineers": [
+      "https://images.unsplash.com/photo-1706581324170-d847716c4512?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwxfHxlbmdpbmVlcnMlMjB3b3JraW5nJTIwY29uc3RydWN0aW9uJTIwc2l0ZXxlbnwwfHx8fDE3Nzc4MTQ0MDZ8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1694521787162-5373b598945c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwyfHxlbmdpbmVlcnMlMjB3b3JraW5nJTIwY29uc3RydWN0aW9uJTIwc2l0ZXxlbnwwfHx8fDE3Nzc4MTQ0MDZ8MA&ixlib=rb-4.1.0&q=85"
+    ],
+    "projects": [
+      "https://images.unsplash.com/photo-1761778682072-6ca22d3da55e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjBjb25zdHJ1Y3Rpb24lMjBza3lzY3JhcGVyJTIwY3JhbmVzfGVufDB8fHx8MTc3NzgxNDQwN3ww&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1777464725685-23c1f81842b5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBjb21tZXJjaWFsJTIwcmVzaWRlbnRpYWwlMjBidWlsZGluZyUyMGV4dGVyaW9yfGVufDB8fHx8MTc3NzgxNDQwN3ww&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1556459537-3f2228eb9490?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHw0fHxsdXh1cnklMjBjb21tZXJjaWFsJTIwcmVzaWRlbnRpYWwlMjBidWlsZGluZyUyMGV4dGVyaW9yfGVufDB8fHx8MTc3NzgxNDQwN3ww&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1567384029525-830201155410?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwzfHxsdXh1cnklMjBjb21tZXJjaWFsJTIwcmVzaWRlbnRpYWwlMjBidWlsZGluZyUyMGV4dGVyaW9yfGVufDB8fHx8MTc3NzgxNDQwN3ww&ixlib=rb-4.1.0&q=85"
+    ],
+    "generic_construction": [
+      "https://images.unsplash.com/photo-1759383984112-0aa685194087?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjBjb25zdHJ1Y3Rpb24lMjBza3lzY3JhcGVyJTIwY3JhbmVzfGVufDB8fHx8MTc3NzgxNDQwN3ww&ixlib=rb-4.1.0&q=85"
+    ]
+  },
+  "testing": {
+    "data_testid_rule": "Every button, link, and interactive element MUST have a descriptive data-testid attribute."
+  },
+  "developer_notes": {
+    "component_library": "Shadcn UI",
+    "icons": "lucide-react",
+    "routing": "react-router-dom",
+    "state_management": "React hooks (useState, useEffect)",
+    "data": "Mock all project data in a separate js file (e.g., sampleProjects.js) to keep components clean."
+  }
+}
