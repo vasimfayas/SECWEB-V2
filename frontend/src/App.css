@@ -1,34 +1,60 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.App-header {
-    background-color: #0f0f10;
+.App {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+    background-color: var(--se-navy-deep);
 }
 
-.App-link {
-    color: #61dafb;
+/* Page transition wrapper */
+.page-enter {
+    opacity: 0;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
+/* Service card hover expansion */
+.service-card {
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.service-card:hover {
+    background-color: rgba(212, 175, 55, 0.04);
+    border-color: rgba(212, 175, 55, 0.4);
+}
+
+.service-card .service-detail {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+.service-card:hover .service-detail {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 1rem;
+}
+
+/* Project card overlay */
+.project-card-img {
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.project-card:hover .project-card-img {
+    transform: scale(1.08);
+}
+
+.project-card-overlay {
+    background: linear-gradient(180deg, transparent 30%, rgba(5, 10, 31, 0.95) 100%);
+}
+
+/* Timeline line */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, var(--se-gold) 20%, var(--se-gold) 80%, transparent 100%);
+    transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 20px;
+        transform: none;
     }
 }
