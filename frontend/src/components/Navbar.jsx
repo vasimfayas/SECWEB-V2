@@ -27,13 +27,21 @@ export const Navbar = () => {
     setOpen(false);
   }, [location.pathname]);
 
+  // Home page has dark video hero — when not scrolled there, use white text on transparent.
+  const isHome = location.pathname === "/";
+  const overDark = isHome && !scrolled;
+
+  const linkBase = "link-underline font-heading text-sm uppercase tracking-[0.18em] transition-colors";
+  const linkInactive = overDark ? "text-white/90 hover:text-white" : "text-neutral-700 hover:text-neutral-900";
+  const wordmarkPrimary = overDark ? "text-white" : "text-neutral-900";
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass-nav py-3" : "bg-transparent py-5"
+        overDark ? "bg-transparent py-5" : "glass-nav py-3"
       }`}
       data-testid="main-navbar"
     >
@@ -45,7 +53,7 @@ export const Navbar = () => {
             className="h-12 w-12 lg:h-14 lg:w-14 object-contain"
           />
           <div className="leading-none hidden sm:block">
-            <div className="font-heading font-bold text-white text-lg tracking-tight">SHANNON</div>
+            <div className={`font-heading font-bold text-lg tracking-tight ${wordmarkPrimary}`}>SHANNON</div>
             <div className="text-[10px] tracking-[0.3em] text-[#E11D2E] font-semibold">ENGINEERING</div>
           </div>
         </Link>
@@ -56,9 +64,7 @@ export const Navbar = () => {
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
-                `link-underline font-heading text-sm uppercase tracking-[0.18em] transition-colors ${
-                  isActive ? "text-[#E11D2E] active" : "text-white/85 hover:text-white"
-                }`
+                `${linkBase} ${isActive ? "text-[#E11D2E] active" : linkInactive}`
               }
               data-testid={`nav-link-${l.label.toLowerCase()}`}
             >
@@ -76,7 +82,7 @@ export const Navbar = () => {
         </Link>
 
         <button
-          className="lg:hidden text-white p-2"
+          className={`lg:hidden p-2 ${overDark ? "text-white" : "text-neutral-900"}`}
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           data-testid="nav-mobile-toggle"
@@ -92,7 +98,7 @@ export const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:hidden overflow-hidden glass-nav border-t border-white/5"
+            className="lg:hidden overflow-hidden bg-white border-t border-neutral-200"
             data-testid="nav-mobile-panel"
           >
             <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-4">
@@ -102,7 +108,7 @@ export const Navbar = () => {
                   to={l.to}
                   className={({ isActive }) =>
                     `font-heading text-2xl tracking-tight ${
-                      isActive ? "text-[#E11D2E]" : "text-white"
+                      isActive ? "text-[#E11D2E]" : "text-neutral-900"
                     }`
                   }
                   data-testid={`mobile-nav-link-${l.label.toLowerCase()}`}

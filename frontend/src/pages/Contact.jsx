@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Linkedin, ArrowUpRight, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Send } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Contact() {
@@ -12,7 +12,6 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-    // Mocked submission for now (frontend-only as requested)
     await new Promise((r) => setTimeout(r, 900));
     toast.success("Inquiry received. Our team will respond within 24 hours.", {
       description: `Thanks ${form.name || "—"}, we've logged your project brief.`
@@ -22,7 +21,7 @@ export default function Contact() {
   };
 
   return (
-    <div data-testid="contact-page" className="bg-[#050A1F]">
+    <div data-testid="contact-page" className="bg-white">
       {/* Header */}
       <section className="pt-40 pb-16 blueprint-bg">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -38,7 +37,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-heading font-black text-white text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.95] max-w-4xl"
+            className="font-heading font-black text-neutral-900 text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.95] max-w-4xl"
           >
             Let's <span className="text-[#E11D2E]">build</span><br />
             something that lasts.
@@ -47,7 +46,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Grid */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
           {/* Form */}
           <motion.form
@@ -60,7 +59,7 @@ export default function Contact() {
             data-testid="contact-form"
           >
             <p className="text-overline mb-2">Project Brief</p>
-            <h2 className="font-heading text-white text-3xl lg:text-4xl tracking-tight mb-10">
+            <h2 className="font-heading text-neutral-900 text-3xl lg:text-4xl tracking-tight mb-10">
               Tell us about your vision.
             </h2>
 
@@ -120,7 +119,7 @@ export default function Contact() {
             className="lg:col-span-5"
           >
             <p className="text-overline mb-2">Reach Us</p>
-            <h2 className="font-heading text-white text-3xl lg:text-4xl tracking-tight mb-10">
+            <h2 className="font-heading text-neutral-900 text-3xl lg:text-4xl tracking-tight mb-10">
               London · Singapore · Dubai
             </h2>
 
@@ -139,42 +138,42 @@ export default function Contact() {
                   transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
                   className="flex items-start gap-5 group"
                 >
-                  <div className="w-12 h-12 border border-white/15 flex items-center justify-center text-[#E11D2E] flex-shrink-0 group-hover:border-[#E11D2E] group-hover:bg-[#E11D2E] group-hover:text-[#0A1128] transition-all duration-500">
+                  <div className="w-12 h-12 border border-neutral-300 flex items-center justify-center text-[#E11D2E] flex-shrink-0 group-hover:border-[#E11D2E] group-hover:bg-[#E11D2E] group-hover:text-white transition-all duration-500">
                     <item.icon className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-overline mb-1">{item.label}</p>
                     {item.href ? (
-                      <a href={item.href} className="text-white hover:text-[#E11D2E] transition-colors whitespace-pre-line">
+                      <a href={item.href} className="text-neutral-900 hover:text-[#E11D2E] transition-colors whitespace-pre-line">
                         {item.value}
                       </a>
                     ) : (
-                      <p className="text-white whitespace-pre-line leading-snug">{item.value}</p>
+                      <p className="text-neutral-900 whitespace-pre-line leading-snug">{item.value}</p>
                     )}
                   </div>
                 </motion.li>
               ))}
             </ul>
 
-            <div className="mt-10 p-6 border border-white/10 bg-[#0A1128]">
+            <div className="mt-10 p-6 border border-neutral-200 bg-[#F4F5F7]">
               <p className="text-overline mb-3">Office Hours</p>
-              <p className="text-white/75 text-sm">Mon — Fri · 09:00 to 18:30 (GMT)</p>
-              <p className="text-white/55 text-xs mt-1">24/7 emergency line for active projects</p>
+              <p className="text-neutral-700 text-sm">Mon — Fri · 09:00 to 18:30 (GMT)</p>
+              <p className="text-neutral-500 text-xs mt-1">24/7 emergency line for active projects</p>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Map */}
-      <section className="pb-24">
+      <section className="pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="relative aspect-[16/7] overflow-hidden border border-white/10" data-testid="map-embed">
+          <div className="relative aspect-[16/7] overflow-hidden border border-neutral-200" data-testid="map-embed">
             <iframe
               title="Shannon Engineering Office"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.0824499716387!2d-0.07849268422956687!3d51.51137951799637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876035c91a9b51b%3A0x46b9d5fc5d72c7a5!2sCity%20of%20London%2C%20UK!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
               width="100%"
               height="100%"
-              style={{ border: 0, filter: "invert(0.92) hue-rotate(180deg) saturate(0.6)" }}
+              style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

@@ -12,7 +12,7 @@ const values = [
 
 export default function About() {
   return (
-    <div data-testid="about-page" className="bg-[#050A1F]">
+    <div data-testid="about-page" className="bg-white">
       {/* Header */}
       <section className="pt-40 pb-20 blueprint-bg">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -28,7 +28,7 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-heading font-black text-white text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.95] max-w-5xl"
+            className="font-heading font-black text-neutral-900 text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.95] max-w-5xl"
           >
             Engineering integrity.<br />
             <span className="text-[#E11D2E]">Built to endure.</span>
@@ -37,7 +37,7 @@ export default function About() {
       </section>
 
       {/* Story */}
-      <section className="py-24 lg:py-32">
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -47,10 +47,10 @@ export default function About() {
             className="lg:col-span-7"
           >
             <p className="text-overline mb-5">Our Story</p>
-            <h2 className="font-heading text-white text-3xl lg:text-5xl tracking-tight leading-[1.1] mb-8">
+            <h2 className="font-heading text-neutral-900 text-3xl lg:text-5xl tracking-tight leading-[1.1] mb-8">
               From a small civil practice in Dublin to a global design–build firm.
             </h2>
-            <div className="space-y-6 text-white/70 text-base lg:text-lg leading-relaxed">
+            <div className="space-y-6 text-neutral-600 text-base lg:text-lg leading-relaxed">
               <p>
                 Shannon Engineering was founded in 1998 by a small group of structural engineers who believed
                 that great buildings begin with great engineering — not the other way around. From a single
@@ -90,7 +90,7 @@ export default function About() {
       </section>
 
       {/* Mission / Vision */}
-      <section className="py-24 lg:py-32 bg-[#0A1128]">
+      <section className="py-24 lg:py-32 bg-[#F4F5F7]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {[
             { label: "Mission", title: "Engineer assets that outperform their lifetime.", body: "We design and build infrastructure that performs — economically, environmentally, and structurally — beyond its design life." },
@@ -102,23 +102,23 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
-              className="bg-[#151C2F] p-10 lg:p-14 border border-white/5 hover:border-[#E11D2E]/40 transition-all duration-500 hover:-translate-y-1"
+              className="bg-white p-10 lg:p-14 border border-neutral-200 hover:border-[#E11D2E]/40 transition-all duration-500 hover:-translate-y-1 shadow-sm hover:shadow-xl"
               data-testid={`mission-vision-card-${i}`}
             >
               <p className="text-overline mb-6">{card.label}</p>
-              <h3 className="font-heading text-white text-3xl lg:text-4xl tracking-tight leading-[1.1]">{card.title}</h3>
-              <p className="mt-6 text-white/70 leading-relaxed">{card.body}</p>
+              <h3 className="font-heading text-neutral-900 text-3xl lg:text-4xl tracking-tight leading-[1.1]">{card.title}</h3>
+              <p className="mt-6 text-neutral-600 leading-relaxed">{card.body}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* Timeline */}
-      <section className="py-24 lg:py-32 relative">
+      <section className="py-24 lg:py-32 relative bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <p className="text-overline mb-5">Milestones</p>
-            <h2 className="font-heading text-white text-4xl lg:text-6xl tracking-tight leading-[1.05]">
+            <h2 className="font-heading text-neutral-900 text-4xl lg:text-6xl tracking-tight leading-[1.05]">
               Twenty-six years of <span className="text-[#E11D2E]">building.</span>
             </h2>
           </div>
@@ -138,11 +138,11 @@ export default function About() {
                   }`}
                   data-testid={`milestone-${m.year}`}
                 >
-                  <div className="absolute left-[14px] md:left-1/2 md:-translate-x-1/2 w-3 h-3 bg-[#E11D2E] rounded-full ring-4 ring-[#050A1F]"></div>
+                  <div className="absolute left-[14px] md:left-1/2 md:-translate-x-1/2 w-3 h-3 bg-[#E11D2E] rounded-full ring-4 ring-white"></div>
                   <div className="md:w-1/2 md:px-12">
                     <div className="font-heading font-black text-[#E11D2E] text-5xl lg:text-7xl tracking-tight">{m.year}</div>
-                    <h3 className="font-heading text-white text-2xl mt-3">{m.title}</h3>
-                    <p className="text-white/65 mt-3 leading-relaxed">{m.description}</p>
+                    <h3 className="font-heading text-neutral-900 text-2xl mt-3">{m.title}</h3>
+                    <p className="text-neutral-600 mt-3 leading-relaxed">{m.description}</p>
                   </div>
                   <div className="md:w-1/2"></div>
                 </motion.div>
@@ -153,14 +153,14 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="py-24 lg:py-32 bg-[#0A1128] blueprint-bg">
+      <section className="py-24 lg:py-32 bg-[#F4F5F7] blueprint-bg">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <p className="text-overline mb-5">Our Values</p>
-          <h2 className="font-heading text-white text-4xl lg:text-6xl tracking-tight leading-[1.05] max-w-3xl">
+          <h2 className="font-heading text-neutral-900 text-4xl lg:text-6xl tracking-tight leading-[1.05] max-w-3xl">
             Four principles that guide every project.
           </h2>
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200">
             {values.map((v, i) => (
               <motion.div
                 key={v.title}
@@ -168,12 +168,12 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.07 }}
-                className="bg-[#0A1128] p-10 group hover:bg-[#151C2F] transition-colors duration-500"
+                className="bg-white p-10 group hover:bg-neutral-50 transition-colors duration-500"
                 data-testid={`value-card-${i}`}
               >
                 <v.icon className="w-9 h-9 text-[#E11D2E] mb-6" strokeWidth={1.4} />
-                <h3 className="font-heading text-white text-xl">{v.title}</h3>
-                <p className="text-white/65 mt-3 text-sm leading-relaxed">{v.text}</p>
+                <h3 className="font-heading text-neutral-900 text-xl">{v.title}</h3>
+                <p className="text-neutral-600 mt-3 text-sm leading-relaxed">{v.text}</p>
               </motion.div>
             ))}
           </div>
@@ -181,10 +181,10 @@ export default function About() {
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((s) => (
               <div key={s.label} className="text-center md:text-left">
-                <div className="font-heading font-black text-white text-4xl lg:text-6xl">
+                <div className="font-heading font-black text-neutral-900 text-4xl lg:text-6xl">
                   <AnimatedCounter value={s.value} suffix={s.suffix} />
                 </div>
-                <div className="text-xs text-white/55 uppercase tracking-[0.18em] mt-2">{s.label}</div>
+                <div className="text-xs text-neutral-500 uppercase tracking-[0.18em] mt-2">{s.label}</div>
               </div>
             ))}
           </div>
