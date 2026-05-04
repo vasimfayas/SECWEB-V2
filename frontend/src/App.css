@@ -13,8 +13,8 @@
     transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .service-card:hover {
-    background-color: rgba(212, 175, 55, 0.04);
-    border-color: rgba(212, 175, 55, 0.4);
+    background-color: rgba(225, 29, 46, 0.04);
+    border-color: rgba(225, 29, 46, 0.4);
 }
 
 .service-card .service-detail {

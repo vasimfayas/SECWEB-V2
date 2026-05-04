@@ -9,8 +9,8 @@
     --se-navy-deep: #050A1F;
     --se-navy-surface: #151C2F;
     --se-steel: #2D3748;
-    --se-gold: #D4AF37;
-    --se-orange: #E67E22;
+    --se-gold: #E11D2E;
+    --se-orange: #B91C1C;
     --se-light: #F8F9FA;
     --se-text-muted: #94A3B8;
     --se-border: rgba(255, 255, 255, 0.08);
@@ -63,13 +63,13 @@ body {
         --card-foreground: 210 20% 98%;
         --popover: 222 60% 10%;
         --popover-foreground: 210 20% 98%;
-        --primary: 45 65% 52%;
-        --primary-foreground: 222 60% 10%;
+        --primary: 354 78% 50%;
+        --primary-foreground: 0 0% 100%;
         --secondary: 217 28% 19%;
         --secondary-foreground: 210 20% 98%;
         --muted: 217 28% 19%;
         --muted-foreground: 215 20% 65%;
-        --accent: 27 80% 52%;
+        --accent: 0 72% 42%;
         --accent-foreground: 0 0% 100%;
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
@@ -122,8 +122,8 @@ body {
 .blueprint-bg {
     background-color: var(--se-navy-deep);
     background-image:
-        linear-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212, 175, 55, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(225, 29, 46, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(225, 29, 46, 0.05) 1px, transparent 1px);
     background-size: 48px 48px;
 }
 

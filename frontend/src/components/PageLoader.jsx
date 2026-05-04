@@ -20,20 +20,15 @@ export const PageLoader = () => {
           data-testid="page-loader"
         >
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7 }}
             className="text-center"
           >
-            <div className="font-heading text-5xl md:text-6xl font-black text-white tracking-tighter">
-              SHANNON
-            </div>
-            <div className="text-[11px] md:text-xs tracking-[0.5em] text-[#D4AF37] font-semibold mt-2">
-              ENGINEERING
-            </div>
+            <img src="/logo.png" alt="Shannon Engineering" className="h-28 md:h-32 w-auto mx-auto mb-2" />
           </motion.div>
           <div className="mt-12 w-56 h-px bg-white/10 overflow-hidden">
-            <div className="loader-bar h-full bg-[#D4AF37]"></div>
+            <div className="loader-bar h-full bg-[#E11D2E]"></div>
           </div>
           <p className="mt-4 text-[10px] tracking-[0.4em] text-white/40 uppercase font-heading">
             Building the Future

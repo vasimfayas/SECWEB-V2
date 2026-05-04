@@ -33,7 +33,7 @@ export default function Services() {
             className="font-heading font-black text-white text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.95] max-w-5xl"
           >
             Six disciplines.<br />
-            <span className="text-[#D4AF37]">One integrated practice.</span>
+            <span className="text-[#E11D2E]">One integrated practice.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -64,7 +64,7 @@ export default function Services() {
                   data-testid={`services-card-${i}`}
                 >
                   <div className="flex items-start justify-between">
-                    <Icon className="w-12 h-12 text-[#D4AF37]" strokeWidth={1.3} />
+                    <Icon className="w-12 h-12 text-[#E11D2E]" strokeWidth={1.3} />
                     <span className="text-white/30 font-heading text-xs">0{i + 1}</span>
                   </div>
                   <h3 className="font-heading text-2xl lg:text-3xl text-white mt-10 tracking-tight">{s.title}</h3>
@@ -85,7 +85,7 @@ export default function Services() {
           <div className="lg:col-span-5">
             <p className="text-overline mb-5">Our Process</p>
             <h2 className="font-heading text-white text-4xl lg:text-6xl tracking-tight leading-[1.05]">
-              From <span className="text-[#D4AF37]">brief</span> to <span className="text-[#D4AF37]">benchmark.</span>
+              From <span className="text-[#E11D2E]">brief</span> to <span className="text-[#E11D2E]">benchmark.</span>
             </h2>
             <p className="mt-6 text-white/70 leading-relaxed">
               Five stages, one continuous accountability — from concept feasibility to post-occupancy
@@ -94,7 +94,7 @@ export default function Services() {
             <ul className="mt-8 space-y-3">
               {checklist.map((c) => (
                 <li key={c} className="flex items-center gap-3 text-white/80">
-                  <CheckCircle2 className="w-5 h-5 text-[#D4AF37]" />
+                  <CheckCircle2 className="w-5 h-5 text-[#E11D2E]" />
                   <span>{c}</span>
                 </li>
               ))}
@@ -125,7 +125,7 @@ export default function Services() {
                 className="bg-[#0A1128] p-8 flex items-start gap-6 hover:bg-[#151C2F] transition-colors"
                 data-testid={`process-step-${step.n}`}
               >
-                <div className="font-heading font-black text-[#D4AF37] text-3xl lg:text-4xl flex-shrink-0">{step.n}</div>
+                <div className="font-heading font-black text-[#E11D2E] text-3xl lg:text-4xl flex-shrink-0">{step.n}</div>
                 <div>
                   <h4 className="font-heading text-white text-xl">{step.t}</h4>
                   <p className="text-white/60 mt-2 text-sm leading-relaxed">{step.d}</p>

@@ -33,7 +33,7 @@ export default function Projects() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-heading font-black text-white text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.95] max-w-5xl"
           >
-            Selected <span className="text-[#D4AF37]">Projects.</span>
+            Selected <span className="text-[#E11D2E]">Projects.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -56,8 +56,8 @@ export default function Projects() {
               onClick={() => setFilter(f)}
               className={`px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-heading font-semibold transition-all border ${
                 filter === f
-                  ? "bg-[#D4AF37] text-[#0A1128] border-[#D4AF37]"
-                  : "bg-transparent text-white/70 border-white/15 hover:border-[#D4AF37] hover:text-white"
+                  ? "bg-[#E11D2E] text-[#0A1128] border-[#E11D2E]"
+                  : "bg-transparent text-white/70 border-white/15 hover:border-[#E11D2E] hover:text-white"
               }`}
               data-testid={`filter-${f.toLowerCase()}`}
             >
@@ -95,7 +95,7 @@ export default function Projects() {
                     <img src={p.image} alt={p.title} className="project-card-img w-full h-full object-cover" />
                     <div className="absolute inset-0 project-card-overlay" />
                     <div className="absolute top-5 left-5">
-                      <span className="text-[10px] tracking-[0.3em] uppercase text-[#D4AF37] font-heading font-semibold border border-[#D4AF37]/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
+                      <span className="text-[10px] tracking-[0.3em] uppercase text-[#E11D2E] font-heading font-semibold border border-[#E11D2E]/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
                         {p.category}
                       </span>
                     </div>
@@ -105,7 +105,7 @@ export default function Projects() {
                           <h3 className="font-heading text-xl lg:text-2xl font-bold tracking-tight">{p.title}</h3>
                           <p className="text-white/70 text-xs mt-1 uppercase tracking-[0.15em]">{p.location} · {p.year}</p>
                         </div>
-                        <div className="w-10 h-10 border border-[#D4AF37] flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#0A1128] transition-all flex-shrink-0">
+                        <div className="w-10 h-10 border border-[#E11D2E] flex items-center justify-center text-[#E11D2E] group-hover:bg-[#E11D2E] group-hover:text-[#0A1128] transition-all flex-shrink-0">
                           <ArrowUpRight className="w-4 h-4" />
                         </div>
                       </div>

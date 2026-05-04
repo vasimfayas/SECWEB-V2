@@ -53,7 +53,7 @@ export default function Home() {
           >
             Building the
             <br />
-            <span className="text-[#D4AF37]">Architecture</span>
+            <span className="text-[#E11D2E]">Architecture</span>
             <br />
             of Tomorrow.
           </motion.h1>
@@ -97,7 +97,7 @@ export default function Home() {
             <div key={k} className="flex gap-16 items-center flex-shrink-0">
               {["ISO 9001", "LEED Platinum", "BREEAM Outstanding", "ISO 45001", "BIM Level 3", "Net-Zero 2030"].map((c, i) => (
                 <span key={`${k}-${i}`} className="font-heading text-2xl text-white/30 tracking-tight uppercase">
-                  {c} <span className="text-[#D4AF37] mx-8">◆</span>
+                  {c} <span className="text-[#E11D2E] mx-8">◆</span>
                 </span>
               ))}
             </div>
@@ -123,7 +123,7 @@ export default function Home() {
                 data-testid="about-teaser-image"
               />
             </div>
-            <div className="absolute -bottom-8 -right-4 lg:-right-8 bg-[#D4AF37] text-[#0A1128] p-6 lg:p-8 max-w-[260px]">
+            <div className="absolute -bottom-8 -right-4 lg:-right-8 bg-[#E11D2E] text-[#0A1128] p-6 lg:p-8 max-w-[260px]">
               <div className="font-heading font-black text-5xl">26+</div>
               <div className="text-xs uppercase tracking-[0.2em] mt-1 font-semibold">Years of precision engineering</div>
             </div>
@@ -138,7 +138,7 @@ export default function Home() {
           >
             <p className="text-overline mb-5">About Shannon</p>
             <h2 className="font-heading font-bold text-white text-4xl lg:text-6xl tracking-tight leading-[1.05]">
-              We build assets that <span className="text-[#D4AF37]">stand the test of time.</span>
+              We build assets that <span className="text-[#E11D2E]">stand the test of time.</span>
             </h2>
             <p className="mt-8 text-white/70 text-base lg:text-lg leading-relaxed">
               Founded in 1998, Shannon Engineering has delivered over 520 landmark projects across commercial,
@@ -148,7 +148,7 @@ export default function Home() {
 
             <div className="mt-10 grid grid-cols-2 gap-6">
               {stats.slice(0, 4).map((s) => (
-                <div key={s.label} className="border-l-2 border-[#D4AF37] pl-4">
+                <div key={s.label} className="border-l-2 border-[#E11D2E] pl-4">
                   <div className="font-heading font-black text-white text-3xl lg:text-4xl">
                     <AnimatedCounter value={s.value} suffix={s.suffix} />
                   </div>
@@ -159,7 +159,7 @@ export default function Home() {
 
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 mt-10 text-[#D4AF37] font-heading uppercase text-sm tracking-[0.2em] hover:gap-4 transition-all"
+              className="inline-flex items-center gap-2 mt-10 text-[#E11D2E] font-heading uppercase text-sm tracking-[0.2em] hover:gap-4 transition-all"
               data-testid="home-about-cta"
             >
               Discover Our Story <ArrowRight className="w-4 h-4" />
@@ -180,7 +180,7 @@ export default function Home() {
             </div>
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 text-white/80 hover:text-[#D4AF37] font-heading uppercase text-sm tracking-[0.2em] transition-all"
+              className="inline-flex items-center gap-2 text-white/80 hover:text-[#E11D2E] font-heading uppercase text-sm tracking-[0.2em] transition-all"
               data-testid="home-services-cta"
             >
               All Services <ArrowRight className="w-4 h-4" />
@@ -201,7 +201,7 @@ export default function Home() {
                   data-testid={`service-card-${i}`}
                 >
                   <div className="flex items-start justify-between">
-                    <Icon className="w-10 h-10 text-[#D4AF37]" strokeWidth={1.4} />
+                    <Icon className="w-10 h-10 text-[#E11D2E]" strokeWidth={1.4} />
                     <span className="text-white/30 font-heading text-xs">0{i + 1}</span>
                   </div>
                   <h3 className="font-heading text-2xl text-white mt-8">{s.title}</h3>
@@ -228,7 +228,7 @@ export default function Home() {
             </div>
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 text-white/80 hover:text-[#D4AF37] font-heading uppercase text-sm tracking-[0.2em]"
+              className="inline-flex items-center gap-2 text-white/80 hover:text-[#E11D2E] font-heading uppercase text-sm tracking-[0.2em]"
               data-testid="home-projects-cta"
             >
               All Projects <ArrowRight className="w-4 h-4" />
@@ -253,7 +253,7 @@ export default function Home() {
                   <img src={p.image} alt={p.title} className="project-card-img w-full h-full object-cover" />
                   <div className="absolute inset-0 project-card-overlay" />
                   <div className="absolute top-6 left-6">
-                    <span className="text-[10px] tracking-[0.3em] uppercase text-[#D4AF37] font-heading font-semibold border border-[#D4AF37]/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-[#E11D2E] font-heading font-semibold border border-[#E11D2E]/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
                       {p.category}
                     </span>
                   </div>
@@ -263,7 +263,7 @@ export default function Home() {
                         <h3 className="font-heading text-2xl lg:text-3xl font-bold tracking-tight">{p.title}</h3>
                         <p className="text-white/70 text-sm mt-1">{p.location} · {p.year}</p>
                       </div>
-                      <div className="w-12 h-12 border border-[#D4AF37] flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#0A1128] transition-all flex-shrink-0">
+                      <div className="w-12 h-12 border border-[#E11D2E] flex items-center justify-center text-[#E11D2E] group-hover:bg-[#E11D2E] group-hover:text-[#0A1128] transition-all flex-shrink-0">
                         <ArrowUpRight className="w-5 h-5" />
                       </div>
                     </div>
@@ -289,7 +289,7 @@ export default function Home() {
           <h2 className="font-heading font-black text-white text-4xl lg:text-7xl tracking-[-0.03em] leading-[0.95]">
             Have a vision?
             <br />
-            <span className="text-[#D4AF37]">We engineer it.</span>
+            <span className="text-[#E11D2E]">We engineer it.</span>
           </h2>
           <p className="mt-8 text-white/70 max-w-xl mx-auto text-lg">
             From feasibility to handover — let's talk about your next landmark project.

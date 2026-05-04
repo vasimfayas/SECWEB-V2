@@ -38,7 +38,7 @@ export default function ProjectDetail() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 text-white/70 hover:text-[#D4AF37] mb-8 text-xs uppercase tracking-[0.2em] font-heading"
+              className="inline-flex items-center gap-2 text-white/70 hover:text-[#E11D2E] mb-8 text-xs uppercase tracking-[0.2em] font-heading"
               data-testid="back-to-projects"
             >
               <ArrowLeft className="w-4 h-4" /> All Projects
@@ -49,7 +49,7 @@ export default function ProjectDetail() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[10px] tracking-[0.3em] uppercase text-[#D4AF37] font-heading font-semibold border border-[#D4AF37]/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
+              <span className="text-[10px] tracking-[0.3em] uppercase text-[#E11D2E] font-heading font-semibold border border-[#E11D2E]/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
                 {project.category}
               </span>
               <h1 className="font-heading font-black text-white text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.92] mt-6 max-w-4xl">
@@ -68,7 +68,7 @@ export default function ProjectDetail() {
                 key={i}
                 onClick={() => setActive(i)}
                 className={`w-16 h-16 lg:w-20 lg:h-20 overflow-hidden border-2 transition-all ${
-                  active === i ? "border-[#D4AF37]" : "border-white/20 opacity-60 hover:opacity-100"
+                  active === i ? "border-[#E11D2E]" : "border-white/20 opacity-60 hover:opacity-100"
                 }`}
                 data-testid={`gallery-thumb-${i}`}
               >
@@ -89,7 +89,7 @@ export default function ProjectDetail() {
             { icon: User, label: "Client", value: project.client }
           ].map((item, i) => (
             <div key={item.label} className="p-6 lg:p-10" data-testid={`info-${item.label.toLowerCase()}`}>
-              <item.icon className="w-5 h-5 text-[#D4AF37] mb-4" />
+              <item.icon className="w-5 h-5 text-[#E11D2E] mb-4" />
               <p className="text-overline mb-2">{item.label}</p>
               <p className="text-white text-sm lg:text-base font-medium leading-snug">{item.value}</p>
             </div>
@@ -130,7 +130,7 @@ export default function ProjectDetail() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="text-center md:text-left border-l-0 md:border-l-2 md:border-[#D4AF37] md:pl-6"
+                className="text-center md:text-left border-l-0 md:border-l-2 md:border-[#E11D2E] md:pl-6"
                 data-testid={`project-stat-${i}`}
               >
                 <div className="font-heading font-black text-white text-4xl lg:text-6xl tracking-tight">
@@ -152,7 +152,7 @@ export default function ProjectDetail() {
             data-testid="prev-project"
           >
             <p className="text-overline mb-3 flex items-center gap-2"><ArrowLeft className="w-3 h-3" /> Previous</p>
-            <p className="font-heading text-white text-2xl lg:text-3xl group-hover:text-[#D4AF37] transition-colors">{prev.title}</p>
+            <p className="font-heading text-white text-2xl lg:text-3xl group-hover:text-[#E11D2E] transition-colors">{prev.title}</p>
           </Link>
           <Link
             to={`/projects/${next.slug}`}
@@ -160,7 +160,7 @@ export default function ProjectDetail() {
             data-testid="next-project"
           >
             <p className="text-overline mb-3 flex items-center gap-2 justify-end">Next <ArrowRight className="w-3 h-3" /></p>
-            <p className="font-heading text-white text-2xl lg:text-3xl group-hover:text-[#D4AF37] transition-colors">{next.title}</p>
+            <p className="font-heading text-white text-2xl lg:text-3xl group-hover:text-[#E11D2E] transition-colors">{next.title}</p>
           </Link>
         </div>
       </section>

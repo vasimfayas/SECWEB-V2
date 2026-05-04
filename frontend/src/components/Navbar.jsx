@@ -39,12 +39,14 @@ export const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group" data-testid="nav-logo-link">
-          <div className="w-9 h-9 border border-[#D4AF37] flex items-center justify-center group-hover:bg-[#D4AF37] transition-colors duration-400">
-            <span className="font-heading font-black text-[#D4AF37] group-hover:text-[#0A1128] transition-colors text-sm">SE</span>
-          </div>
-          <div className="leading-none">
+          <img
+            src="/logo.png"
+            alt="Shannon Engineering"
+            className="h-12 w-12 lg:h-14 lg:w-14 object-contain"
+          />
+          <div className="leading-none hidden sm:block">
             <div className="font-heading font-bold text-white text-lg tracking-tight">SHANNON</div>
-            <div className="text-[10px] tracking-[0.3em] text-[#D4AF37] font-semibold">ENGINEERING</div>
+            <div className="text-[10px] tracking-[0.3em] text-[#E11D2E] font-semibold">ENGINEERING</div>
           </div>
         </Link>
 
@@ -55,7 +57,7 @@ export const Navbar = () => {
               to={l.to}
               className={({ isActive }) =>
                 `link-underline font-heading text-sm uppercase tracking-[0.18em] transition-colors ${
-                  isActive ? "text-[#D4AF37] active" : "text-white/85 hover:text-white"
+                  isActive ? "text-[#E11D2E] active" : "text-white/85 hover:text-white"
                 }`
               }
               data-testid={`nav-link-${l.label.toLowerCase()}`}
@@ -100,7 +102,7 @@ export const Navbar = () => {
                   to={l.to}
                   className={({ isActive }) =>
                     `font-heading text-2xl tracking-tight ${
-                      isActive ? "text-[#D4AF37]" : "text-white"
+                      isActive ? "text-[#E11D2E]" : "text-white"
                     }`
                   }
                   data-testid={`mobile-nav-link-${l.label.toLowerCase()}`}

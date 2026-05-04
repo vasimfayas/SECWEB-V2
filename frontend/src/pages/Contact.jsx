@@ -40,7 +40,7 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-heading font-black text-white text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.95] max-w-4xl"
           >
-            Let's <span className="text-[#D4AF37]">build</span><br />
+            Let's <span className="text-[#E11D2E]">build</span><br />
             something that lasts.
           </motion.h1>
         </div>
@@ -139,13 +139,13 @@ export default function Contact() {
                   transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
                   className="flex items-start gap-5 group"
                 >
-                  <div className="w-12 h-12 border border-white/15 flex items-center justify-center text-[#D4AF37] flex-shrink-0 group-hover:border-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#0A1128] transition-all duration-500">
+                  <div className="w-12 h-12 border border-white/15 flex items-center justify-center text-[#E11D2E] flex-shrink-0 group-hover:border-[#E11D2E] group-hover:bg-[#E11D2E] group-hover:text-[#0A1128] transition-all duration-500">
                     <item.icon className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-overline mb-1">{item.label}</p>
                     {item.href ? (
-                      <a href={item.href} className="text-white hover:text-[#D4AF37] transition-colors whitespace-pre-line">
+                      <a href={item.href} className="text-white hover:text-[#E11D2E] transition-colors whitespace-pre-line">
                         {item.value}
                       </a>
                     ) : (

@@ -31,7 +31,7 @@ export default function About() {
             className="font-heading font-black text-white text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.95] max-w-5xl"
           >
             Engineering integrity.<br />
-            <span className="text-[#D4AF37]">Built to endure.</span>
+            <span className="text-[#E11D2E]">Built to endure.</span>
           </motion.h1>
         </div>
       </section>
@@ -102,7 +102,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
-              className="bg-[#151C2F] p-10 lg:p-14 border border-white/5 hover:border-[#D4AF37]/40 transition-all duration-500 hover:-translate-y-1"
+              className="bg-[#151C2F] p-10 lg:p-14 border border-white/5 hover:border-[#E11D2E]/40 transition-all duration-500 hover:-translate-y-1"
               data-testid={`mission-vision-card-${i}`}
             >
               <p className="text-overline mb-6">{card.label}</p>
@@ -119,7 +119,7 @@ export default function About() {
           <div className="text-center mb-16">
             <p className="text-overline mb-5">Milestones</p>
             <h2 className="font-heading text-white text-4xl lg:text-6xl tracking-tight leading-[1.05]">
-              Twenty-six years of <span className="text-[#D4AF37]">building.</span>
+              Twenty-six years of <span className="text-[#E11D2E]">building.</span>
             </h2>
           </div>
 
@@ -138,9 +138,9 @@ export default function About() {
                   }`}
                   data-testid={`milestone-${m.year}`}
                 >
-                  <div className="absolute left-[14px] md:left-1/2 md:-translate-x-1/2 w-3 h-3 bg-[#D4AF37] rounded-full ring-4 ring-[#050A1F]"></div>
+                  <div className="absolute left-[14px] md:left-1/2 md:-translate-x-1/2 w-3 h-3 bg-[#E11D2E] rounded-full ring-4 ring-[#050A1F]"></div>
                   <div className="md:w-1/2 md:px-12">
-                    <div className="font-heading font-black text-[#D4AF37] text-5xl lg:text-7xl tracking-tight">{m.year}</div>
+                    <div className="font-heading font-black text-[#E11D2E] text-5xl lg:text-7xl tracking-tight">{m.year}</div>
                     <h3 className="font-heading text-white text-2xl mt-3">{m.title}</h3>
                     <p className="text-white/65 mt-3 leading-relaxed">{m.description}</p>
                   </div>
@@ -171,7 +171,7 @@ export default function About() {
                 className="bg-[#0A1128] p-10 group hover:bg-[#151C2F] transition-colors duration-500"
                 data-testid={`value-card-${i}`}
               >
-                <v.icon className="w-9 h-9 text-[#D4AF37] mb-6" strokeWidth={1.4} />
+                <v.icon className="w-9 h-9 text-[#E11D2E] mb-6" strokeWidth={1.4} />
                 <h3 className="font-heading text-white text-xl">{v.title}</h3>
                 <p className="text-white/65 mt-3 text-sm leading-relaxed">{v.text}</p>
               </motion.div>
