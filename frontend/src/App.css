@@ -1,19 +1,18 @@
 .App {
     min-height: 100vh;
-    background-color: var(--se-navy-deep);
+    background-color: var(--se-bg);
 }
 
-/* Page transition wrapper */
 .page-enter {
     opacity: 0;
 }
 
-/* Service card hover expansion */
+/* Service card hover (light) */
 .service-card {
     transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .service-card:hover {
-    background-color: rgba(225, 29, 46, 0.04);
+    background-color: rgba(225, 29, 46, 0.03);
     border-color: rgba(225, 29, 46, 0.4);
 }
 
@@ -29,7 +28,7 @@
     margin-top: 1rem;
 }
 
-/* Project card overlay */
+/* Project card overlay (kept dark - sits over images) */
 .project-card-img {
     transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -38,7 +37,7 @@
 }
 
 .project-card-overlay {
-    background: linear-gradient(180deg, transparent 30%, rgba(5, 10, 31, 0.95) 100%);
+    background: linear-gradient(180deg, transparent 30%, rgba(5, 10, 31, 0.92) 100%);
 }
 
 /* Timeline line */
@@ -48,7 +47,7 @@
     top: 0;
     bottom: 0;
     width: 1px;
-    background: linear-gradient(180deg, transparent 0%, var(--se-gold) 20%, var(--se-gold) 80%, transparent 100%);
+    background: linear-gradient(180deg, transparent 0%, #E11D2E 20%, #E11D2E 80%, transparent 100%);
     transform: translateX(-50%);
 }
 

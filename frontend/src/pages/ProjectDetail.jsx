@@ -19,8 +19,8 @@ export default function ProjectDetail() {
   const gallery = project.gallery && project.gallery.length > 0 ? project.gallery : [project.image];
 
   return (
-    <div data-testid="project-detail-page" className="bg-[#050A1F]">
-      {/* Hero */}
+    <div data-testid="project-detail-page" className="bg-white">
+      {/* Hero (kept dark over image) */}
       <section className="relative h-[80vh] min-h-[560px] overflow-hidden">
         <motion.img
           key={active}
@@ -38,7 +38,7 @@ export default function ProjectDetail() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 text-white/70 hover:text-[#E11D2E] mb-8 text-xs uppercase tracking-[0.2em] font-heading"
+              className="inline-flex items-center gap-2 text-white/80 hover:text-[#E11D2E] mb-8 text-xs uppercase tracking-[0.2em] font-heading"
               data-testid="back-to-projects"
             >
               <ArrowLeft className="w-4 h-4" /> All Projects
@@ -49,13 +49,13 @@ export default function ProjectDetail() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[10px] tracking-[0.3em] uppercase text-[#E11D2E] font-heading font-semibold border border-[#E11D2E]/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
+              <span className="text-[10px] tracking-[0.3em] uppercase text-white font-heading font-semibold border border-white/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
                 {project.category}
               </span>
               <h1 className="font-heading font-black text-white text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.92] mt-6 max-w-4xl">
                 {project.title}
               </h1>
-              <p className="text-white/80 text-lg lg:text-2xl font-heading mt-4 tracking-tight">{project.summary}</p>
+              <p className="text-white/85 text-lg lg:text-2xl font-heading mt-4 tracking-tight">{project.summary}</p>
             </motion.div>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function ProjectDetail() {
                 key={i}
                 onClick={() => setActive(i)}
                 className={`w-16 h-16 lg:w-20 lg:h-20 overflow-hidden border-2 transition-all ${
-                  active === i ? "border-[#E11D2E]" : "border-white/20 opacity-60 hover:opacity-100"
+                  active === i ? "border-[#E11D2E]" : "border-white/30 opacity-60 hover:opacity-100"
                 }`}
                 data-testid={`gallery-thumb-${i}`}
               >
@@ -80,25 +80,25 @@ export default function ProjectDetail() {
       </section>
 
       {/* Info Strip */}
-      <section className="border-y border-white/5 bg-[#0A1128]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/5">
+      <section className="border-y border-neutral-200 bg-[#F4F5F7]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 divide-x divide-neutral-200">
           {[
             { icon: MapPin, label: "Location", value: project.location },
             { icon: Calendar, label: "Year", value: project.year },
             { icon: Briefcase, label: "Scope", value: project.scope },
             { icon: User, label: "Client", value: project.client }
-          ].map((item, i) => (
+          ].map((item) => (
             <div key={item.label} className="p-6 lg:p-10" data-testid={`info-${item.label.toLowerCase()}`}>
               <item.icon className="w-5 h-5 text-[#E11D2E] mb-4" />
               <p className="text-overline mb-2">{item.label}</p>
-              <p className="text-white text-sm lg:text-base font-medium leading-snug">{item.value}</p>
+              <p className="text-neutral-900 text-sm lg:text-base font-medium leading-snug">{item.value}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Description */}
-      <section className="py-24 lg:py-32">
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -107,19 +107,19 @@ export default function ProjectDetail() {
             transition={{ duration: 0.8 }}
           >
             <p className="text-overline mb-5">Project Brief</p>
-            <h2 className="font-heading text-white text-3xl lg:text-5xl tracking-tight leading-[1.1] mb-10">
+            <h2 className="font-heading text-neutral-900 text-3xl lg:text-5xl tracking-tight leading-[1.1] mb-10">
               Engineering a landmark of permanence.
             </h2>
-            <p className="text-white/75 text-lg leading-relaxed">{project.description}</p>
+            <p className="text-neutral-700 text-lg leading-relaxed">{project.description}</p>
           </motion.div>
         </div>
       </section>
 
       {/* Stats */}
-      <section className="py-24 lg:py-32 bg-[#0A1128] blueprint-bg">
+      <section className="py-24 lg:py-32 bg-[#F4F5F7] blueprint-bg">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <p className="text-overline mb-5 text-center">By The Numbers</p>
-          <h2 className="font-heading text-white text-3xl lg:text-5xl tracking-tight text-center mb-16">
+          <h2 className="font-heading text-neutral-900 text-3xl lg:text-5xl tracking-tight text-center mb-16">
             Project metrics.
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
@@ -133,10 +133,10 @@ export default function ProjectDetail() {
                 className="text-center md:text-left border-l-0 md:border-l-2 md:border-[#E11D2E] md:pl-6"
                 data-testid={`project-stat-${i}`}
               >
-                <div className="font-heading font-black text-white text-4xl lg:text-6xl tracking-tight">
+                <div className="font-heading font-black text-neutral-900 text-4xl lg:text-6xl tracking-tight">
                   <AnimatedCounter value={s.value} suffix={s.suffix} />
                 </div>
-                <div className="text-xs text-white/55 uppercase tracking-[0.18em] mt-2">{s.label}</div>
+                <div className="text-xs text-neutral-500 uppercase tracking-[0.18em] mt-2">{s.label}</div>
               </motion.div>
             ))}
           </div>
@@ -144,31 +144,31 @@ export default function ProjectDetail() {
       </section>
 
       {/* Prev / Next */}
-      <section className="border-t border-white/5">
+      <section className="border-t border-neutral-200 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2">
           <Link
             to={`/projects/${prev.slug}`}
-            className="group p-10 lg:p-16 border-r-0 md:border-r border-b md:border-b-0 border-white/5 hover:bg-[#0A1128] transition-colors"
+            className="group p-10 lg:p-16 border-r-0 md:border-r border-b md:border-b-0 border-neutral-200 hover:bg-neutral-50 transition-colors"
             data-testid="prev-project"
           >
             <p className="text-overline mb-3 flex items-center gap-2"><ArrowLeft className="w-3 h-3" /> Previous</p>
-            <p className="font-heading text-white text-2xl lg:text-3xl group-hover:text-[#E11D2E] transition-colors">{prev.title}</p>
+            <p className="font-heading text-neutral-900 text-2xl lg:text-3xl group-hover:text-[#E11D2E] transition-colors">{prev.title}</p>
           </Link>
           <Link
             to={`/projects/${next.slug}`}
-            className="group p-10 lg:p-16 text-right hover:bg-[#0A1128] transition-colors"
+            className="group p-10 lg:p-16 text-right hover:bg-neutral-50 transition-colors"
             data-testid="next-project"
           >
             <p className="text-overline mb-3 flex items-center gap-2 justify-end">Next <ArrowRight className="w-3 h-3" /></p>
-            <p className="font-heading text-white text-2xl lg:text-3xl group-hover:text-[#E11D2E] transition-colors">{next.title}</p>
+            <p className="font-heading text-neutral-900 text-2xl lg:text-3xl group-hover:text-[#E11D2E] transition-colors">{next.title}</p>
           </Link>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-[#050A1F] text-center">
+      <section className="py-24 bg-white text-center">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
-          <h2 className="font-heading text-white text-3xl lg:text-5xl tracking-tight leading-[1.1]">
+          <h2 className="font-heading text-neutral-900 text-3xl lg:text-5xl tracking-tight leading-[1.1]">
             Plan a similar project?
           </h2>
           <Link

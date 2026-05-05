@@ -15,7 +15,7 @@ export default function Projects() {
   );
 
   return (
-    <div data-testid="projects-page" className="bg-[#050A1F]">
+    <div data-testid="projects-page" className="bg-white">
       {/* Header */}
       <section className="pt-40 pb-16 blueprint-bg">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -31,7 +31,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-heading font-black text-white text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.95] max-w-5xl"
+            className="font-heading font-black text-neutral-900 text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.95] max-w-5xl"
           >
             Selected <span className="text-[#E11D2E]">Projects.</span>
           </motion.h1>
@@ -39,7 +39,7 @@ export default function Projects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-8 text-white/70 max-w-2xl text-lg"
+            className="mt-8 text-neutral-600 max-w-2xl text-lg"
           >
             A curated selection across commercial, residential and infrastructure. Filter by category to
             explore.
@@ -48,7 +48,7 @@ export default function Projects() {
       </section>
 
       {/* Filters */}
-      <section className="py-6 sticky top-[68px] z-40 glass-nav border-b border-white/5">
+      <section className="py-6 sticky top-[68px] z-40 glass-nav border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-wrap gap-3">
           {FILTERS.map((f) => (
             <button
@@ -56,22 +56,22 @@ export default function Projects() {
               onClick={() => setFilter(f)}
               className={`px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-heading font-semibold transition-all border ${
                 filter === f
-                  ? "bg-[#E11D2E] text-[#0A1128] border-[#E11D2E]"
-                  : "bg-transparent text-white/70 border-white/15 hover:border-[#E11D2E] hover:text-white"
+                  ? "bg-[#E11D2E] text-white border-[#E11D2E]"
+                  : "bg-transparent text-neutral-700 border-neutral-300 hover:border-[#E11D2E] hover:text-[#E11D2E]"
               }`}
               data-testid={`filter-${f.toLowerCase()}`}
             >
               {f}
             </button>
           ))}
-          <span className="ml-auto text-xs text-white/45 font-heading uppercase tracking-[0.2em] self-center">
+          <span className="ml-auto text-xs text-neutral-500 font-heading uppercase tracking-[0.2em] self-center">
             {filtered.length} project{filtered.length !== 1 ? "s" : ""}
           </span>
         </div>
       </section>
 
       {/* Grid */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             layout
@@ -95,7 +95,7 @@ export default function Projects() {
                     <img src={p.image} alt={p.title} className="project-card-img w-full h-full object-cover" />
                     <div className="absolute inset-0 project-card-overlay" />
                     <div className="absolute top-5 left-5">
-                      <span className="text-[10px] tracking-[0.3em] uppercase text-[#E11D2E] font-heading font-semibold border border-[#E11D2E]/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
+                      <span className="text-[10px] tracking-[0.3em] uppercase text-white font-heading font-semibold border border-white/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
                         {p.category}
                       </span>
                     </div>
@@ -103,9 +103,9 @@ export default function Projects() {
                       <div className="flex items-end justify-between gap-3">
                         <div className="flex-1">
                           <h3 className="font-heading text-xl lg:text-2xl font-bold tracking-tight">{p.title}</h3>
-                          <p className="text-white/70 text-xs mt-1 uppercase tracking-[0.15em]">{p.location} · {p.year}</p>
+                          <p className="text-white/80 text-xs mt-1 uppercase tracking-[0.15em]">{p.location} · {p.year}</p>
                         </div>
-                        <div className="w-10 h-10 border border-[#E11D2E] flex items-center justify-center text-[#E11D2E] group-hover:bg-[#E11D2E] group-hover:text-[#0A1128] transition-all flex-shrink-0">
+                        <div className="w-10 h-10 border border-[#E11D2E] flex items-center justify-center text-[#E11D2E] bg-white/10 backdrop-blur-sm group-hover:bg-[#E11D2E] group-hover:text-white transition-all flex-shrink-0">
                           <ArrowUpRight className="w-4 h-4" />
                         </div>
                       </div>

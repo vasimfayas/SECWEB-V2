@@ -19,8 +19,8 @@ export default function Home() {
   const featured = projects.slice(0, 4);
 
   return (
-    <div data-testid="home-page">
-      {/* HERO */}
+    <div data-testid="home-page" className="bg-white">
+      {/* HERO (kept dark over video) */}
       <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
         <video
           autoPlay
@@ -60,7 +60,7 @@ export default function Home() {
 
           <motion.p
             variants={heroItem}
-            className="mt-8 max-w-xl text-base lg:text-lg text-white/75 leading-relaxed"
+            className="mt-8 max-w-xl text-base lg:text-lg text-white/80 leading-relaxed"
           >
             Shannon Engineering is a global design–build firm delivering precision-engineered commercial,
             residential and infrastructure assets across 22 countries.
@@ -76,7 +76,7 @@ export default function Home() {
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm uppercase tracking-[0.2em] border border-white/20 text-white hover:bg-white/10 backdrop-blur-sm transition-all"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm uppercase tracking-[0.2em] border border-white/30 text-white hover:bg-white/10 backdrop-blur-sm transition-all"
               data-testid="hero-contact-us"
             >
               Contact Us <ArrowUpRight className="w-4 h-4" />
@@ -84,19 +84,19 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/60">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/70">
           <span className="text-[10px] tracking-[0.4em] uppercase font-heading">Scroll</span>
           <ArrowDown className="w-4 h-4 scroll-indicator" />
         </div>
       </section>
 
-      {/* MARQUEE STRIP */}
-      <section className="bg-[#0A1128] border-y border-white/5 py-6 overflow-hidden">
+      {/* MARQUEE STRIP (light) */}
+      <section className="bg-white border-y border-neutral-200 py-6 overflow-hidden">
         <div className="marquee-track flex gap-16 whitespace-nowrap">
           {[...Array(2)].map((_, k) => (
             <div key={k} className="flex gap-16 items-center flex-shrink-0">
               {["ISO 9001", "LEED Platinum", "BREEAM Outstanding", "ISO 45001", "BIM Level 3", "Net-Zero 2030"].map((c, i) => (
-                <span key={`${k}-${i}`} className="font-heading text-2xl text-white/30 tracking-tight uppercase">
+                <span key={`${k}-${i}`} className="font-heading text-2xl text-neutral-400 tracking-tight uppercase">
                   {c} <span className="text-[#E11D2E] mx-8">◆</span>
                 </span>
               ))}
@@ -106,7 +106,7 @@ export default function Home() {
       </section>
 
       {/* ABOUT TEASER */}
-      <section className="bg-[#050A1F] py-24 lg:py-32">
+      <section className="bg-white py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -123,7 +123,7 @@ export default function Home() {
                 data-testid="about-teaser-image"
               />
             </div>
-            <div className="absolute -bottom-8 -right-4 lg:-right-8 bg-[#E11D2E] text-[#0A1128] p-6 lg:p-8 max-w-[260px]">
+            <div className="absolute -bottom-8 -right-4 lg:-right-8 bg-[#E11D2E] text-white p-6 lg:p-8 max-w-[260px] shadow-xl">
               <div className="font-heading font-black text-5xl">26+</div>
               <div className="text-xs uppercase tracking-[0.2em] mt-1 font-semibold">Years of precision engineering</div>
             </div>
@@ -137,10 +137,10 @@ export default function Home() {
             className="lg:col-span-6"
           >
             <p className="text-overline mb-5">About Shannon</p>
-            <h2 className="font-heading font-bold text-white text-4xl lg:text-6xl tracking-tight leading-[1.05]">
+            <h2 className="font-heading font-bold text-neutral-900 text-4xl lg:text-6xl tracking-tight leading-[1.05]">
               We build assets that <span className="text-[#E11D2E]">stand the test of time.</span>
             </h2>
-            <p className="mt-8 text-white/70 text-base lg:text-lg leading-relaxed">
+            <p className="mt-8 text-neutral-600 text-base lg:text-lg leading-relaxed">
               Founded in 1998, Shannon Engineering has delivered over 520 landmark projects across commercial,
               residential and civil infrastructure. Our integrated design–build model fuses structural rigor
               with sustainability, technology and craftsmanship.
@@ -149,10 +149,10 @@ export default function Home() {
             <div className="mt-10 grid grid-cols-2 gap-6">
               {stats.slice(0, 4).map((s) => (
                 <div key={s.label} className="border-l-2 border-[#E11D2E] pl-4">
-                  <div className="font-heading font-black text-white text-3xl lg:text-4xl">
+                  <div className="font-heading font-black text-neutral-900 text-3xl lg:text-4xl">
                     <AnimatedCounter value={s.value} suffix={s.suffix} />
                   </div>
-                  <div className="text-xs text-white/60 uppercase tracking-[0.18em] mt-1">{s.label}</div>
+                  <div className="text-xs text-neutral-500 uppercase tracking-[0.18em] mt-1">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -169,25 +169,25 @@ export default function Home() {
       </section>
 
       {/* SERVICES OVERVIEW */}
-      <section className="bg-[#0A1128] py-24 lg:py-32 blueprint-bg">
+      <section className="bg-[#F4F5F7] py-24 lg:py-32 blueprint-bg">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
             <div>
               <p className="text-overline mb-5">What We Do</p>
-              <h2 className="font-heading font-bold text-white text-4xl lg:text-6xl tracking-tight leading-[1.05] max-w-2xl">
+              <h2 className="font-heading font-bold text-neutral-900 text-4xl lg:text-6xl tracking-tight leading-[1.05] max-w-2xl">
                 Six disciplines.<br />One integrated practice.
               </h2>
             </div>
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 text-white/80 hover:text-[#E11D2E] font-heading uppercase text-sm tracking-[0.2em] transition-all"
+              className="inline-flex items-center gap-2 text-neutral-700 hover:text-[#E11D2E] font-heading uppercase text-sm tracking-[0.2em] transition-all"
               data-testid="home-services-cta"
             >
               All Services <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-neutral-200">
             {services.map((s, i) => {
               const Icon = ICONS[s.icon];
               return (
@@ -197,17 +197,17 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: i * 0.05 }}
-                  className="service-card group bg-[#0A1128] p-10 border border-transparent cursor-default"
+                  className="service-card group bg-white p-10 border border-transparent cursor-default"
                   data-testid={`service-card-${i}`}
                 >
                   <div className="flex items-start justify-between">
                     <Icon className="w-10 h-10 text-[#E11D2E]" strokeWidth={1.4} />
-                    <span className="text-white/30 font-heading text-xs">0{i + 1}</span>
+                    <span className="text-neutral-300 font-heading text-xs">0{i + 1}</span>
                   </div>
-                  <h3 className="font-heading text-2xl text-white mt-8">{s.title}</h3>
-                  <p className="text-white/60 mt-3 text-sm leading-relaxed">{s.short}</p>
+                  <h3 className="font-heading text-2xl text-neutral-900 mt-8">{s.title}</h3>
+                  <p className="text-neutral-600 mt-3 text-sm leading-relaxed">{s.short}</p>
                   <div className="service-detail">
-                    <p className="text-white/70 text-sm leading-relaxed border-t border-white/10 pt-4">{s.detail}</p>
+                    <p className="text-neutral-700 text-sm leading-relaxed border-t border-neutral-200 pt-4">{s.detail}</p>
                   </div>
                 </motion.div>
               );
@@ -217,18 +217,18 @@ export default function Home() {
       </section>
 
       {/* FEATURED PROJECTS */}
-      <section className="bg-[#050A1F] py-24 lg:py-32">
+      <section className="bg-white py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
             <div>
               <p className="text-overline mb-5">Selected Work</p>
-              <h2 className="font-heading font-bold text-white text-4xl lg:text-6xl tracking-tight leading-[1.05]">
+              <h2 className="font-heading font-bold text-neutral-900 text-4xl lg:text-6xl tracking-tight leading-[1.05]">
                 Featured Projects.
               </h2>
             </div>
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 text-white/80 hover:text-[#E11D2E] font-heading uppercase text-sm tracking-[0.2em]"
+              className="inline-flex items-center gap-2 text-neutral-700 hover:text-[#E11D2E] font-heading uppercase text-sm tracking-[0.2em]"
               data-testid="home-projects-cta"
             >
               All Projects <ArrowRight className="w-4 h-4" />
@@ -253,7 +253,7 @@ export default function Home() {
                   <img src={p.image} alt={p.title} className="project-card-img w-full h-full object-cover" />
                   <div className="absolute inset-0 project-card-overlay" />
                   <div className="absolute top-6 left-6">
-                    <span className="text-[10px] tracking-[0.3em] uppercase text-[#E11D2E] font-heading font-semibold border border-[#E11D2E]/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-white font-heading font-semibold border border-white/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
                       {p.category}
                     </span>
                   </div>
@@ -261,9 +261,9 @@ export default function Home() {
                     <div className="flex items-end justify-between gap-4">
                       <div>
                         <h3 className="font-heading text-2xl lg:text-3xl font-bold tracking-tight">{p.title}</h3>
-                        <p className="text-white/70 text-sm mt-1">{p.location} · {p.year}</p>
+                        <p className="text-white/80 text-sm mt-1">{p.location} · {p.year}</p>
                       </div>
-                      <div className="w-12 h-12 border border-[#E11D2E] flex items-center justify-center text-[#E11D2E] group-hover:bg-[#E11D2E] group-hover:text-[#0A1128] transition-all flex-shrink-0">
+                      <div className="w-12 h-12 border border-[#E11D2E] flex items-center justify-center text-[#E11D2E] bg-white/10 backdrop-blur-sm group-hover:bg-[#E11D2E] group-hover:text-white transition-all flex-shrink-0">
                         <ArrowUpRight className="w-5 h-5" />
                       </div>
                     </div>
@@ -275,9 +275,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative bg-[#0A1128] py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 blueprint-bg opacity-50"></div>
+      {/* CTA (light with red accent) */}
+      <section className="relative bg-[#F4F5F7] py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 blueprint-bg opacity-70"></div>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -286,12 +286,12 @@ export default function Home() {
           className="relative max-w-5xl mx-auto px-6 lg:px-8 text-center"
         >
           <p className="text-overline mb-6">Let's Build</p>
-          <h2 className="font-heading font-black text-white text-4xl lg:text-7xl tracking-[-0.03em] leading-[0.95]">
+          <h2 className="font-heading font-black text-neutral-900 text-4xl lg:text-7xl tracking-[-0.03em] leading-[0.95]">
             Have a vision?
             <br />
             <span className="text-[#E11D2E]">We engineer it.</span>
           </h2>
-          <p className="mt-8 text-white/70 max-w-xl mx-auto text-lg">
+          <p className="mt-8 text-neutral-600 max-w-xl mx-auto text-lg">
             From feasibility to handover — let's talk about your next landmark project.
           </p>
           <Link

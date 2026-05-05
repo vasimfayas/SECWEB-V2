@@ -4,17 +4,17 @@ import { Mail, Phone, MapPin, Linkedin, Instagram, Twitter, ArrowUpRight } from 
 export const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative bg-[#050A1F] border-t border-white/5 pt-20 pb-8" data-testid="site-footer">
+    <footer className="relative bg-[#F4F5F7] border-t border-neutral-200 pt-20 pb-8" data-testid="site-footer">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12">
         <div className="md:col-span-5">
           <div className="flex items-center gap-3 mb-6">
             <img src="/logo.png" alt="Shannon Engineering" className="h-14 w-14 object-contain" />
             <div className="leading-none">
-              <div className="font-heading font-bold text-white text-xl">SHANNON</div>
+              <div className="font-heading font-bold text-neutral-900 text-xl">SHANNON</div>
               <div className="text-[11px] tracking-[0.3em] text-[#E11D2E] font-semibold">ENGINEERING</div>
             </div>
           </div>
-          <p className="text-white/70 max-w-md leading-relaxed">
+          <p className="text-neutral-600 max-w-md leading-relaxed">
             Engineering tomorrow's landmarks today. We design, build and deliver structurally precise,
             sustainable assets across commercial, residential and infrastructure sectors.
           </p>
@@ -23,7 +23,7 @@ export const Footer = () => {
               <a
                 key={i}
                 href="#"
-                className="w-10 h-10 border border-white/15 flex items-center justify-center text-white/70 hover:text-[#E11D2E] hover:border-[#E11D2E] transition-all"
+                className="w-10 h-10 border border-neutral-300 flex items-center justify-center text-neutral-600 hover:text-white hover:bg-[#E11D2E] hover:border-[#E11D2E] transition-all"
                 aria-label="social link"
                 data-testid={`footer-social-${i}`}
               >
@@ -46,7 +46,7 @@ export const Footer = () => {
               <li key={l.to}>
                 <Link
                   to={l.to}
-                  className="text-white/75 hover:text-[#E11D2E] transition-colors inline-flex items-center gap-1 font-body"
+                  className="text-neutral-700 hover:text-[#E11D2E] transition-colors inline-flex items-center gap-1 font-body"
                   data-testid={`footer-link-${l.label.toLowerCase()}`}
                 >
                   {l.label}
@@ -58,7 +58,7 @@ export const Footer = () => {
 
         <div className="md:col-span-4">
           <p className="text-overline mb-6">Contact</p>
-          <ul className="space-y-4 text-white/75">
+          <ul className="space-y-4 text-neutral-700">
             <li className="flex items-start gap-3">
               <MapPin className="w-4 h-4 text-[#E11D2E] mt-1 flex-shrink-0" />
               <span>Level 24, One Maritime Square, London EC3N 4AB, United Kingdom</span>
@@ -82,7 +82,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 mt-16 pt-8 border-t border-neutral-200 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
         <p>© {year} Shannon Engineering. All rights reserved.</p>
         <p className="font-heading uppercase tracking-[0.25em]">Designed · Engineered · Delivered</p>
       </div>
