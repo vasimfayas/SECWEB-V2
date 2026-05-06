@@ -36,6 +36,10 @@ const AnimatedRoutes = () => {
         <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
         <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
         <Route path="/projects/:slug" element={<PageWrapper><ProjectDetail /></PageWrapper>} />
+        <Route path="/team" element={<PageWrapper><Team /></PageWrapper>} />
+        <Route path="/sec-group" element={<PageWrapper><SECGroup /></PageWrapper>} />
+        <Route path="/strategic-partners" element={<PageWrapper><StrategicPartners /></PageWrapper>} />
+        <Route path="/safety" element={<PageWrapper><Safety /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
@@ -51,7 +55,7 @@ function App() {
         <Navbar />
         <AnimatedRoutes />
         <Footer />
-        <Toaster theme="dark" position="bottom-right" />
+        <Toaster theme="light" position="bottom-right" />
       </BrowserRouter>
     </div>
   );
