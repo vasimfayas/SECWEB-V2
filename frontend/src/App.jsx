@@ -1,18 +1,18 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import "@/App.css";
+import "./App.css";
 
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { PageLoader } from "@/components/PageLoader";
-import { ScrollToTop } from "@/components/ScrollToTop";
+import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
+import { PageLoader } from "./components/PageLoader";
+import { ScrollToTop } from "./components/ScrollToTop";
 
-import Home from "@/pages/Home";
-import About from "@/pages/About";
-import Services from "@/pages/Services";
-import Projects from "@/pages/Projects";
-import ProjectDetail from "@/pages/ProjectDetail";
-import Contact from "@/pages/Contact";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
+import Contact from "./pages/Contact";
 import { Toaster } from "sonner";
 
 const PageWrapper = ({ children }) => (
