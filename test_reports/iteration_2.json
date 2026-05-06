@@ -1,0 +1,35 @@
+{
+  "summary": "Frontend regression + new-feature testing for Shannon Engineering. Verified all 4 new pages (/team, /sec-group, /strategic-partners, /safety) load with all expected data-testid markers (4 leaders + 8 discipline heads on Team; 5 sister companies; 20 consultants + 20 clients; 3 SHE pillars + 8 certs). Direct URL / hard-refresh works for every new page. Existing pages (Home, About, Services, Projects, Contact) load with no regressions. Footer carries all 9 nav links and they route correctly. Mobile SEC Group accordion expands/collapses and reveals Sister Companies + Our Team. Top-level Strategic Partners and Safety links work. Zero browser console errors. ONE functional bug found: the desktop 'SEC Group' dropdown trigger combines onMouseEnter (open) with onClick (toggle), so a single click from a non-hovered state opens then immediately closes the menu. Hover-only and click-twice both work; this just breaks the click-to-open flow that the spec explicitly says should work.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Navbar.jsx — desktop SEC Group dropdown trigger",
+        "issue": "Single click on the SEC Group button does NOT open the dropdown when the mouse is approaching from outside. The button has both onMouseEnter={() => setSecOpen(true)} and onClick={() => setSecOpen(v => !v)}. Playwright (and a real user moving the cursor onto the button before clicking) fires mouseenter first (state -> true), then the click toggles state -> false. Net effect: the menu opens for ~0ms then closes. A second click is needed to keep it open. Spec requires both hover AND click to work.",
+        "selector": "[data-testid=\\\"nav-link-sec-group\\\"]",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Fix the click/hover conflict on the desktop SEC Group dropdown trigger in /app/frontend/src/components/Navbar.jsx. Recommended fix: remove the onClick toggle and rely on onMouseEnter to open + onMouseLeave on the panel to close (already wired), OR change onClick to setSecOpen(true) (always-open on click) since outside-click already closes it, OR drop onMouseEnter so click is the sole opener. Currently click-to-open is broken because mouseenter pre-sets state to true before onClick toggles it back to false."
+  ],
+  "critical_code_review_comments": [
+    "Navbar.jsx line 103-113: onMouseEnter + onClick toggling the same state is a known anti-pattern; it produces the click-to-close-on-first-click bug captured above.",
+    "Navbar.jsx outside-click handler uses 'mousedown' which is correct, but keyboard users have no way to open the dropdown (no onKeyDown / aria-expanded / aria-haspopup). Accessibility nit, not blocking.",
+    "Footer/Navbar both list the same 9 routes — could be DRY'd into a shared nav-config constant to avoid drift when routes change.",
+    "Sister-company 'Visit' links are href='#' placeholders (acknowledged as MOCKED).",
+    "Contact form submission still MOCKED via setTimeout + sonner toast (acknowledged from iteration_1)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "95% (1 navbar UX bug)"},
+  "test_credentials": "N/A — no auth in app",
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "All new pages render correctly with all data-testids. Mobile accordion works. The only bug is in Navbar.jsx desktop SEC Group dropdown — onMouseEnter + onClick conflict. To verify the fix: from a fresh state (mouse not on the button), do a single click on [data-testid='nav-link-sec-group'] and assert [data-testid='nav-dropdown-sister-companies'] becomes visible. In Playwright tests it's safer to use page.hover() to open the dropdown until the bug is fixed. data-testids confirmed working: nav-link-sec-group, nav-dropdown-sister-companies, nav-dropdown-our-team, mobile-nav-sec-group, mobile-nav-dropdown-sister-companies, mobile-nav-dropdown-our-team, team-page, sec-group-page, strategic-partners-page, safety-page, leader-card-{0..3}, discipline-head-{0..7}, sister-company-{01..05}, consultant-{0..19}, client-{0..19}, pillar-safety/health/environment, safety-cert-{0..7}, footer-link-{home,about,sec-group,our-team,services,projects,strategic-partners,safety,contact}.",
+  "rca of the issue": "Root cause: the SEC Group <button> has both an onMouseEnter handler that sets secOpen=true and an onClick handler that toggles secOpen. On any pointer-driven click, the browser fires events in the order: pointerover -> mouseenter -> mousedown -> mouseup -> click. So when a user moves the cursor onto the button and clicks, mouseenter sets state to true, then the click toggles it back to false; the panel renders for an instant and then unmounts. Reproduction: from any page with a non-home navbar (e.g., /about), with mouse not over the SEC Group button, perform a single click on [data-testid='nav-link-sec-group']; observe that the dropdown does NOT remain open. A second click correctly opens it because by then the mouse is already inside (mouseenter does not refire). Mitigation: pick one open/close strategy. Simplest patch: change onClick={() => setSecOpen(v => !v)} to onClick={() => setSecOpen(true)}; outside-click + onMouseLeave already handle closing. Alternative: drop onMouseEnter to make it click-only."
+}

@@ -39,15 +39,19 @@ export const Footer = () => {
             {[
               { to: "/", label: "Home" },
               { to: "/about", label: "About" },
+              { to: "/sec-group", label: "SEC Group" },
+              { to: "/team", label: "Our Team" },
               { to: "/services", label: "Services" },
               { to: "/projects", label: "Projects" },
+              { to: "/strategic-partners", label: "Strategic Partners" },
+              { to: "/safety", label: "Safety" },
               { to: "/contact", label: "Contact" }
             ].map((l) => (
               <li key={l.to}>
                 <Link
                   to={l.to}
                   className="text-neutral-700 hover:text-[#E11D2E] transition-colors inline-flex items-center gap-1 font-body"
-                  data-testid={`footer-link-${l.label.toLowerCase()}`}
+                  data-testid={`footer-link-${l.label.toLowerCase().replace(/\s+/g, "-")}`}
                 >
                   {l.label}
                 </Link>

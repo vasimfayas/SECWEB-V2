@@ -13,6 +13,10 @@ import Services from "@/pages/Services";
 import Projects from "@/pages/Projects";
 import ProjectDetail from "@/pages/ProjectDetail";
 import Contact from "@/pages/Contact";
+import Team from "@/pages/Team";
+import SECGroup from "@/pages/SECGroup";
+import StrategicPartners from "@/pages/StrategicPartners";
+import Safety from "@/pages/Safety";
 import { Toaster } from "sonner";
 
 const PageWrapper = ({ children }) => (
@@ -36,6 +40,10 @@ const AnimatedRoutes = () => {
         <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
         <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
         <Route path="/projects/:slug" element={<PageWrapper><ProjectDetail /></PageWrapper>} />
+        <Route path="/team" element={<PageWrapper><Team /></PageWrapper>} />
+        <Route path="/sec-group" element={<PageWrapper><SECGroup /></PageWrapper>} />
+        <Route path="/strategic-partners" element={<PageWrapper><StrategicPartners /></PageWrapper>} />
+        <Route path="/safety" element={<PageWrapper><Safety /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
@@ -51,7 +59,7 @@ function App() {
         <Navbar />
         <AnimatedRoutes />
         <Footer />
-        <Toaster theme="dark" position="bottom-right" />
+        <Toaster theme="light" position="bottom-right" />
       </BrowserRouter>
     </div>
   );
