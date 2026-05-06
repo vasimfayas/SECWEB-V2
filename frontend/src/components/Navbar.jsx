@@ -101,7 +101,7 @@ export const Navbar = () => {
           {/* SEC Group dropdown */}
           <div ref={dropdownRef} className="relative">
             <button
-              onClick={() => setSecOpen((v) => !v)}
+              onClick={() => setSecOpen(true)}
               onMouseEnter={() => setSecOpen(true)}
               className={`${linkBase} flex items-center gap-1 ${
                 isSecActive ? "text-[#E11D2E] active" : linkInactive
