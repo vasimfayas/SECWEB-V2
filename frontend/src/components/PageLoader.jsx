@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import logo from '@/assets/logo.png';
 
 export const PageLoader = () => {
   const [show, setShow] = useState(true);
@@ -25,7 +26,7 @@ export const PageLoader = () => {
             transition={{ duration: 0.7 }}
             className="text-center"
           >
-            <img src="/logo.png" alt="Shannon Engineering" className="h-28 md:h-32 w-auto mx-auto mb-2" />
+            <img src={logo} alt="Shannon Engineering" className="h-28 md:h-32 w-auto mx-auto mb-2" />
           </motion.div>
           <div className="mt-12 w-56 h-px bg-neutral-200 overflow-hidden">
             <div className="loader-bar h-full bg-[#E11D2E]"></div>

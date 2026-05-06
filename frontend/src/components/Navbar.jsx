@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
+import logo from '@/assets/logo.png';
 
 const flatLinks = [
   { to: "/", label: "Home" },
@@ -66,15 +67,14 @@ export const Navbar = () => {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        overDark ? "bg-transparent py-5" : "glass-nav py-3"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${overDark ? "bg-transparent py-5" : "glass-nav py-3"
+        }`}
       data-testid="main-navbar"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group" data-testid="nav-logo-link">
           <img
-            src="/logo.png"
+            src={logo}
             alt="Shannon Engineering"
             className="h-12 w-12 lg:h-14 lg:w-14 object-contain"
           />
@@ -103,9 +103,8 @@ export const Navbar = () => {
             <button
               onClick={() => setSecOpen(true)}
               onMouseEnter={() => setSecOpen(true)}
-              className={`${linkBase} flex items-center gap-1 ${
-                isSecActive ? "text-[#E11D2E] active" : linkInactive
-              }`}
+              className={`${linkBase} flex items-center gap-1 ${isSecActive ? "text-[#E11D2E] active" : linkInactive
+                }`}
               data-testid="nav-link-sec-group"
             >
               SEC Group
@@ -128,10 +127,9 @@ export const Navbar = () => {
                         to={l.to}
                         onClick={() => setSecOpen(false)}
                         className={({ isActive }) =>
-                          `block px-5 py-3 font-heading text-sm tracking-tight transition-colors ${
-                            isActive
-                              ? "text-[#E11D2E] bg-neutral-50"
-                              : "text-neutral-800 hover:text-[#E11D2E] hover:bg-neutral-50"
+                          `block px-5 py-3 font-heading text-sm tracking-tight transition-colors ${isActive
+                            ? "text-[#E11D2E] bg-neutral-50"
+                            : "text-neutral-800 hover:text-[#E11D2E] hover:bg-neutral-50"
                           }`
                         }
                         data-testid={`nav-dropdown-${l.label.toLowerCase().replace(/\s+/g, "-")}`}
@@ -205,9 +203,8 @@ export const Navbar = () => {
               <div className="border-t border-neutral-200 pt-3">
                 <button
                   onClick={() => setSecMobileOpen((v) => !v)}
-                  className={`flex items-center justify-between w-full font-heading text-2xl tracking-tight py-1 ${
-                    isSecActive ? "text-[#E11D2E]" : "text-neutral-900"
-                  }`}
+                  className={`flex items-center justify-between w-full font-heading text-2xl tracking-tight py-1 ${isSecActive ? "text-[#E11D2E]" : "text-neutral-900"
+                    }`}
                   data-testid="mobile-nav-sec-group"
                 >
                   SEC Group
@@ -228,8 +225,7 @@ export const Navbar = () => {
                             key={l.to}
                             to={l.to}
                             className={({ isActive }) =>
-                              `block font-heading text-lg tracking-tight py-1 ${
-                                isActive ? "text-[#E11D2E]" : "text-neutral-700"
+                              `block font-heading text-lg tracking-tight py-1 ${isActive ? "text-[#E11D2E]" : "text-neutral-700"
                               }`
                             }
                             data-testid={`mobile-nav-dropdown-${l.label.toLowerCase().replace(/\s+/g, "-")}`}
