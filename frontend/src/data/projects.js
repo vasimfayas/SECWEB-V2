@@ -208,32 +208,32 @@ export const getProjectBySlug = (slug) => projects.find((p) => p.slug === slug);
 export const services = [
   {
     icon: "Building2",
-    title: "Commercial Construction",
-    short: "Headquarters, towers, mixed-use developments delivered turnkey.",
+    title: "Construction",
+    short: "Residential and commercial buildings built with precision.",
     detail: "From foundations to fit-out — design–build delivery for class-A office, retail, hospitality, and mixed-use projects with sustainability at the core."
   },
   {
     icon: "Home",
-    title: "Residential Development",
-    short: "Luxury towers, gated communities, and bespoke private residences.",
+    title: "General Contracting",
+    short: "Complete construction solutions from planning to execution.",
     detail: "End-to-end residential delivery with biophilic design, smart-home integration, and post-occupancy performance verification across portfolios."
   },
   {
     icon: "Construction",
-    title: "Infrastructure & Civil",
-    short: "Bridges, tunnels, transit and aviation infrastructure.",
+    title: "Facilities Management",
+    short: "Ongoing maintenance and support for building performance.",
     detail: "Heavy civil engineering for bridges, tunnels, metros, ports, and aviation. Real-time digital twin monitoring keeps complex programs on track."
   },
   {
     icon: "HardHat",
-    title: "Project Management",
-    short: "Integrated PMC services from concept to commissioning.",
+    title: "Design & Build",
+    short: "Smart design combined with efficient project execution.",
     detail: "Owner's representative, cost control, schedule, risk, and quality across multi-billion-dollar programs. ISO 21500 aligned with EVM reporting."
   },
   {
     icon: "Ruler",
-    title: "Structural Engineering",
-    short: "High-rise, long-span, and seismic structural design.",
+    title: "Interior Design",
+    short: "Custom interior solutions that blend style and functionality. ⁠Transforming spaces with creative, modern interior solutions.",
     detail: "In-house structural design for super-tall towers, long-span steel, and seismic retrofits — with parametric optimization and BIM Level 3 collaboration."
   },
   {
@@ -254,8 +254,8 @@ export const milestones = [
 ];
 
 export const stats = [
-  { value: 26, suffix: "+", label: "Years of Excellence" },
-  { value: 520, suffix: "+", label: "Projects Delivered" },
-  { value: 22, suffix: "", label: "Countries Active" },
-  { value: 4800, suffix: "+", label: "Engineers Worldwide" }
+  { value: 85, suffix: "+", label: "Happy Clients" },
+  { value: 90, suffix: "", label: "Projects Delivered" },
+  { value: 500, suffix: "+", label: "Labours" },
+  { value: 60, suffix: "+", label: "Engineers & Staff" }
 ];

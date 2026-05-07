@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Instagram, Twitter, ArrowUpRight } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export const Footer = () => {
   const year = new Date().getFullYear();
@@ -8,15 +9,14 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12">
         <div className="md:col-span-5">
           <div className="flex items-center gap-3 mb-6">
-            <img src="/logo.png" alt="Shannon Engineering" className="h-14 w-14 object-contain" />
+            <img src={logo} alt="Shannon Engineering" className="h-14 w-14 object-contain" />
             <div className="leading-none">
               <div className="font-heading font-bold text-neutral-900 text-xl">SHANNON</div>
               <div className="text-[11px] tracking-[0.3em] text-[#E11D2E] font-semibold">ENGINEERING</div>
             </div>
           </div>
-          <p className="text-neutral-600 max-w-md leading-relaxed">
-            Engineering tomorrow's landmarks today. We design, build and deliver structurally precise,
-            sustainable assets across commercial, residential and infrastructure sectors.
+          <p className="text-neutral-600 max-w-md leading-relaxed text-justify">
+            A premier construction and contracting company in Qatar, delivering exceptional projects across various sectors.
           </p>
           <div className="flex items-center gap-3 mt-8">
             {[Linkedin, Twitter, Instagram].map((Icon, i) => (

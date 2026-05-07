@@ -162,7 +162,7 @@ export const Navbar = () => {
           className="hidden xl:inline-flex items-center gap-2 btn-gold px-5 py-2.5 text-sm uppercase tracking-[0.18em]"
           data-testid="nav-cta-quote"
         >
-          Get a Quote <ArrowUpRight className="w-4 h-4" />
+          Get IN Touch <ArrowUpRight className="w-4 h-4" />
         </Link>
 
         <button
@@ -268,7 +268,7 @@ export const Navbar = () => {
                 className="btn-gold inline-flex items-center justify-center gap-2 px-5 py-3 mt-4 text-sm uppercase tracking-[0.18em]"
                 data-testid="mobile-nav-cta-quote"
               >
-                Get a Quote <ArrowUpRight className="w-4 h-4" />
+                Get In Touch <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
           </motion.div>

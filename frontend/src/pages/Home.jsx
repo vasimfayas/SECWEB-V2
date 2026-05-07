@@ -1,8 +1,17 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowDown, Building2, Home as HomeIcon, Construction, HardHat, Ruler, Leaf, ArrowUpRight } from "lucide-react";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { projects, services, stats } from "@/data/projects";
+import home from "@/assets/home/about.png"
+import hero1 from "@/assets/home/hero1.webp";
+import hero2 from "@/assets/home/hero2.webp";
+import hero3 from "@/assets/home/hero3.png";
+import hero4 from "@/assets/home/hero4.webp";
+import hero5 from "@/assets/home/hero5.webp";
+import hero6 from "@/assets/home/hero6.jpeg";
+import WhyChooses from "@/components/WhyChooseUs";
 
 const ICONS = { Building2, Home: HomeIcon, Construction, HardHat, Ruler, Leaf };
 
@@ -17,25 +26,50 @@ const heroItem = {
 
 export default function Home() {
   const featured = projects.slice(0, 4);
+  const heroImages = [hero1, hero2, hero3, hero4, hero5, hero6];
 
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) =>
+        prev === heroImages.length - 1 ? 0 : prev + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div data-testid="home-page" className="bg-white">
       {/* HERO (kept dark over video) */}
       <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
-          poster="https://images.unsplash.com/photo-1758261785728-24fc44937941?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBjb25zdHJ1Y3Rpb24lMjBza3lzY3JhcGVyJTIwY3JhbmVzfGVufDB8fHx8MTc3NzgxNDQwN3ww&ixlib=rb-4.1.0&q=85"
-          data-testid="hero-video"
-        >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-crane-in-construction-site-4158-large.mp4" type="video/mp4" />
-        </video>
+
+        {/* BACKGROUND SLIDER */}
+        <div className="absolute inset-0 z-0">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentSlide}
+              src={heroImages[currentSlide]}
+              alt="Hero Background"
+              initial={{ opacity: 0, scale: 1.08 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 1 }}
+              transition={{
+                opacity: { duration: 1.2 },
+                scale: { duration: 6 },
+              }}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </AnimatePresence>
+        </div>
+
+        {/* DARK OVERLAY */}
         <div className="absolute inset-0 hero-scrim z-10"></div>
+
+        {/* GRAIN */}
         <div className="absolute inset-0 grain-overlay z-10 pointer-events-none"></div>
 
+        {/* HERO CONTENT */}
         <motion.div
           variants={heroStagger}
           initial="hidden"
@@ -44,48 +78,78 @@ export default function Home() {
         >
           <motion.div variants={heroItem} className="flex items-center gap-4 mb-8">
             <span className="divider-gold"></span>
-            <span className="text-overline">Engineering · Construction · Delivery</span>
+            <span className="text-overline">
+              Engineering · Construction · Delivery
+            </span>
           </motion.div>
 
           <motion.h1
             variants={heroItem}
             className="font-heading font-black text-white text-5xl sm:text-6xl lg:text-8xl tracking-[-0.04em] leading-[0.92] max-w-5xl"
           >
-            Building the
+            Success
             <br />
-            <span className="text-[#E11D2E]">Architecture</span>
+            <span className="text-[#E11D2E]">Excellence</span>
             <br />
-            of Tomorrow.
+            Commitment.
           </motion.h1>
 
           <motion.p
             variants={heroItem}
             className="mt-8 max-w-xl text-base lg:text-lg text-white/80 leading-relaxed"
           >
-            Shannon Engineering is a global design–build firm delivering precision-engineered commercial,
-            residential and infrastructure assets across 22 countries.
+            Grade A Construction Company Operating in Qatar.
           </motion.p>
 
-          <motion.div variants={heroItem} className="mt-10 flex flex-col sm:flex-row gap-4">
+          <motion.div
+            variants={heroItem}
+            className="mt-10 flex flex-col sm:flex-row gap-4"
+          >
             <Link
               to="/projects"
               className="btn-gold inline-flex items-center justify-center gap-2 px-8 py-4 text-sm uppercase tracking-[0.2em]"
-              data-testid="hero-view-projects"
             >
               View Projects <ArrowRight className="w-4 h-4" />
             </Link>
+
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm uppercase tracking-[0.2em] border border-white/30 text-white hover:bg-white/10 backdrop-blur-sm transition-all"
-              data-testid="hero-contact-us"
             >
               Contact Us <ArrowUpRight className="w-4 h-4" />
             </Link>
           </motion.div>
         </motion.div>
 
+        {/* SLIDER CONTROLS */}
+        <div className="absolute bottom-10 right-10 z-30 flex gap-3">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`relative overflow-hidden h-1 rounded-full transition-all duration-500 ${currentSlide === index
+                ? "w-20 bg-white/20"
+                : "w-8 bg-white/30"
+                }`}
+            >
+              {currentSlide === index && (
+                <motion.div
+                  key={currentSlide}
+                  className="absolute left-0 top-0 h-full bg-[#E11D2E]"
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 5, ease: "linear" }}
+                />
+              )}
+            </button>
+          ))}
+        </div>
+
+        {/* SCROLL INDICATOR */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/70">
-          <span className="text-[10px] tracking-[0.4em] uppercase font-heading">Scroll</span>
+          <span className="text-[10px] tracking-[0.4em] uppercase font-heading">
+            Scroll
+          </span>
           <ArrowDown className="w-4 h-4 scroll-indicator" />
         </div>
       </section>
@@ -95,7 +159,7 @@ export default function Home() {
         <div className="marquee-track flex gap-16 whitespace-nowrap">
           {[...Array(2)].map((_, k) => (
             <div key={k} className="flex gap-16 items-center flex-shrink-0">
-              {["ISO 9001", "LEED Platinum", "BREEAM Outstanding", "ISO 45001", "BIM Level 3", "Net-Zero 2030"].map((c, i) => (
+              {["ISO 18001 CERTIFIED", "ISO 14001 CERTIFIED", "ISO 9001 CERTIFIED", "ICV CERTIFIED"].map((c, i) => (
                 <span key={`${k}-${i}`} className="font-heading text-2xl text-neutral-400 tracking-tight uppercase">
                   {c} <span className="text-[#E11D2E] mx-8">◆</span>
                 </span>
@@ -117,14 +181,14 @@ export default function Home() {
           >
             <div className="relative aspect-[4/5] overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1706581324170-d847716c4512?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwxfHxlbmdpbmVlcnMlMjB3b3JraW5nJTIwY29uc3RydWN0aW9uJTIwc2l0ZXxlbnwwfHx8fDE3Nzc4MTQ0MDZ8MA&ixlib=rb-4.1.0&q=85"
+                src={home}
                 alt="Engineers on site"
                 className="w-full h-full object-cover"
                 data-testid="about-teaser-image"
               />
             </div>
             <div className="absolute -bottom-8 -right-4 lg:-right-8 bg-[#E11D2E] text-white p-6 lg:p-8 max-w-[260px] shadow-xl">
-              <div className="font-heading font-black text-5xl">26+</div>
+              <div className="font-heading font-black text-5xl">25+</div>
               <div className="text-xs uppercase tracking-[0.2em] mt-1 font-semibold">Years of precision engineering</div>
             </div>
           </motion.div>
@@ -137,13 +201,11 @@ export default function Home() {
             className="lg:col-span-6"
           >
             <p className="text-overline mb-5">About Shannon</p>
-            <h2 className="font-heading font-bold text-neutral-900 text-4xl lg:text-6xl tracking-tight leading-[1.05]">
+            <h2 className="font-heading font-bold text-neutral-900 text-4xl lg:text-4xl tracking-tight leading-[1.05]">
               We build assets that <span className="text-[#E11D2E]">stand the test of time.</span>
             </h2>
-            <p className="mt-8 text-neutral-600 text-base lg:text-lg leading-relaxed">
-              Founded in 1998, Shannon Engineering has delivered over 520 landmark projects across commercial,
-              residential and civil infrastructure. Our integrated design–build model fuses structural rigor
-              with sustainability, technology and craftsmanship.
+            <p className="mt-8 text-neutral-600 text-base text-justify lg:text-md leading-relaxed">
+              Now, over a decade since its launch; SEC with its achieved governmental, commercial and residential projects has helped urban development plans for some major Arab cities including Sharjah, UAE and Doha, Qatar. SEC’s continuous dedication to Success, Excellence and Commitment to deliver high-end projects in terms of quality & HSE (Health, Safety & Environment) within projects baselines (Time & Cost) has made us the clients’ right choice.
             </p>
 
             <div className="mt-10 grid grid-cols-2 gap-6">
@@ -274,7 +336,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+      <WhyChooses ></WhyChooses>
       {/* CTA (light with red accent) */}
       <section className="relative bg-[#F4F5F7] py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 blueprint-bg opacity-70"></div>

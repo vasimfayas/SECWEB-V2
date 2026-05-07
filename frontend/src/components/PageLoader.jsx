@@ -32,7 +32,7 @@ export const PageLoader = () => {
             <div className="loader-bar h-full bg-[#E11D2E]"></div>
           </div>
           <p className="mt-4 text-[10px] tracking-[0.4em] text-neutral-500 uppercase font-heading">
-            Building the Future
+            Success <span className="text-[#E11D2E]">Excellece</span> Commitment
           </p>
         </motion.div>
       )}
