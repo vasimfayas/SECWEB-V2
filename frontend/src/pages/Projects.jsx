@@ -1,18 +1,55 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import { projects } from "@/data/projects";
 
-const FILTERS = ["All", "Commercial", "Residential", "Infrastructure"];
+
+
 
 export default function Projects() {
-  const [filter, setFilter] = useState("All");
 
-  const filtered = useMemo(
-    () => (filter === "All" ? projects : projects.filter((p) => p.category === filter)),
-    [filter]
-  );
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const loadProjects = async () => {
+      try {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/projects`);
+
+        if (!res.ok) throw new Error("API failed");
+
+        const data = await res.json();
+        setProjects(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    loadProjects();
+  }, []);
+  const [categories, setCategories] = useState([{ id: 0, category: "All" }]);
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/categories`)
+      .then((res) => res.json())
+      .then((data) => {
+        // assuming API returns:
+        // ["Commercial", "Residential"]
+
+        setCategories([{ id: 0, category: "All" }, ...data]);
+      })
+      .catch((err) => {
+        console.error("Failed to load categories", err);
+      });
+  }, []);
+
+  const [filter, setFilter] = useState(0);
+
+  const filtered = useMemo(() => {
+    if (!projects.length) return [];
+
+    if (filter === 0) return projects;
+
+    return projects.filter((p) => p.category_id === filter);
+  }, [filter, projects]);
 
   return (
     <div data-testid="projects-page" className="bg-white">
@@ -25,7 +62,7 @@ export default function Projects() {
             transition={{ duration: 0.6 }}
             className="text-overline mb-5"
           >
-            Portfolio · 520+ Delivered
+            90+ Projects Delivered
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -50,18 +87,17 @@ export default function Projects() {
       {/* Filters */}
       <section className="py-6 sticky top-[68px] z-40 glass-nav border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-wrap gap-3">
-          {FILTERS.map((f) => (
+          {categories.map((f) => (
             <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-heading font-semibold transition-all border ${
-                filter === f
-                  ? "bg-[#E11D2E] text-white border-[#E11D2E]"
-                  : "bg-transparent text-neutral-700 border-neutral-300 hover:border-[#E11D2E] hover:text-[#E11D2E]"
-              }`}
-              data-testid={`filter-${f.toLowerCase()}`}
+              key={f.id}
+              onClick={() => setFilter(f.id)}
+              className={`px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-heading font-semibold transition-all border ${filter === f.id
+                ? "bg-[#E11D2E] text-white border-[#E11D2E]"
+                : "bg-transparent text-neutral-700 border-neutral-300 hover:border-[#E11D2E] hover:text-[#E11D2E]"
+                }`}
+              data-testid={`filter-${f.category.toLowerCase()}`}
             >
-              {f}
+              {f.category}
             </button>
           ))}
           <span className="ml-auto text-xs text-neutral-500 font-heading uppercase tracking-[0.2em] self-center">
@@ -88,15 +124,15 @@ export default function Projects() {
                   transition={{ duration: 0.5, delay: i * 0.04 }}
                 >
                   <Link
-                    to={`/projects/${p.slug}`}
+                    to={`/projects/${p.id}/${p.slug}`}
                     className="project-card relative block overflow-hidden aspect-[4/5] group"
                     data-testid={`project-card-${p.slug}`}
                   >
-                    <img src={p.image} alt={p.title} className="project-card-img w-full h-full object-cover" />
+                    <img src={`${import.meta.env.VITE_API_URL}/storage/${p.card_img}`} alt={p.title} className="project-card-img w-full h-full object-cover" />
                     <div className="absolute inset-0 project-card-overlay" />
                     <div className="absolute top-5 left-5">
                       <span className="text-[10px] tracking-[0.3em] uppercase text-white font-heading font-semibold border border-white/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
-                        {p.category}
+                        {p.category_id}
                       </span>
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white">

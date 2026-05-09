@@ -1,36 +1,103 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, MapPin, Calendar, Briefcase, User, ArrowUpRight } from "lucide-react";
-import { getProjectBySlug, projects } from "@/data/projects";
-import { AnimatedCounter } from "@/components/AnimatedCounter";
+import {
+  ArrowLeft,
+  ArrowRight,
+  MapPin,
+  Calendar,
+  Briefcase,
+  User,
+  ArrowUpRight
+} from "lucide-react";
 
 export default function ProjectDetail() {
-  const { slug } = useParams();
-  const project = getProjectBySlug(slug);
+  const { id, slug } = useParams();
+
+  const [project, setProject] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
   const [active, setActive] = useState(0);
+  const [allProjects, setAllProjects] = useState([]);
 
-  if (!project) return <Navigate to="/projects" replace />;
+  // FETCH PROJECT
+  useEffect(() => {
+    const loadProject = async () => {
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/project/${id}`
+        );
 
-  const currentIdx = projects.findIndex((p) => p.slug === slug);
-  const prev = projects[(currentIdx - 1 + projects.length) % projects.length];
-  const next = projects[(currentIdx + 1) % projects.length];
+        if (!res.ok) throw new Error();
 
-  const gallery = project.gallery && project.gallery.length > 0 ? project.gallery : [project.image];
+        const data = await res.json();
+        setProject(data);
+      } catch (err) {
+        setNotFound(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProject();
+  }, [id]);
+
+  // FETCH ALL PROJECTS
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/projects`)
+      .then((res) => res.json())
+      .then((data) => setAllProjects(data))
+      .catch(() => { });
+  }, []);
+
+  if (loading) return <div className="p-10">Loading...</div>;
+
+  if (notFound || !project) {
+    return <Navigate to="/projects" replace />;
+  }
+
+  // slug validation
+  if (project.slug !== slug) {
+    return (
+      <Navigate to={`/projects/${project.id}/${project.slug}`} replace />
+    );
+  }
+
+  // ✅ FIX: convert id type safety
+  const currentIdx = allProjects.findIndex(
+    (p) => Number(p.id) === Number(project.id)
+  );
+
+  const safeIdx = currentIdx === -1 ? 0 : currentIdx;
+
+  const prev =
+    allProjects.length > 0
+      ? allProjects[
+      (safeIdx - 1 + allProjects.length) % allProjects.length
+      ]
+      : null;
+
+  const next =
+    allProjects.length > 0
+      ? allProjects[(safeIdx + 1) % allProjects.length]
+      : null;
+
+  const gallery =
+    project.images?.length > 0
+      ? project.images
+      : [project.card_img];
 
   return (
-    <div data-testid="project-detail-page" className="bg-white">
-      {/* Hero (kept dark over image) */}
-      <section className="relative h-[80vh] min-h-[560px] overflow-hidden">
+    <div className="bg-white">
+      {/* HERO */}
+      <section className="relative h-[80vh] overflow-hidden">
         <motion.img
           key={active}
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          src={gallery[active]}
-          alt={project.title}
+          src={`${import.meta.env.VITE_API_URL}/storage/${gallery[active]}`}
           className="absolute inset-0 w-full h-full object-cover"
-          data-testid="project-hero-image"
         />
         <div className="absolute inset-0 hero-scrim"></div>
 
@@ -50,7 +117,7 @@ export default function ProjectDetail() {
               transition={{ duration: 0.8 }}
             >
               <span className="text-[10px] tracking-[0.3em] uppercase text-white font-heading font-semibold border border-white/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
-                {project.category}
+                {project.category?.category}
               </span>
               <h1 className="font-heading font-black text-white text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.92] mt-6 max-w-4xl">
                 {project.title}
@@ -67,9 +134,8 @@ export default function ProjectDetail() {
               <button
                 key={i}
                 onClick={() => setActive(i)}
-                className={`w-16 h-16 lg:w-20 lg:h-20 overflow-hidden border-2 transition-all ${
-                  active === i ? "border-[#E11D2E]" : "border-white/30 opacity-60 hover:opacity-100"
-                }`}
+                className={`w-16 h-16 lg:w-20 lg:h-20 overflow-hidden border-2 transition-all ${active === i ? "border-[#E11D2E]" : "border-white/30 opacity-60 hover:opacity-100"
+                  }`}
                 data-testid={`gallery-thumb-${i}`}
               >
                 <img src={g} alt={`thumb-${i}`} className="w-full h-full object-cover" />
@@ -84,9 +150,9 @@ export default function ProjectDetail() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 divide-x divide-neutral-200">
           {[
             { icon: MapPin, label: "Location", value: project.location },
-            { icon: Calendar, label: "Year", value: project.year },
-            { icon: Briefcase, label: "Scope", value: project.scope },
-            { icon: User, label: "Client", value: project.client }
+            { icon: Calendar, label: "Year", value: project.completed_year },
+            { icon: Briefcase, label: "Scope", value: project.completed_year },
+            { icon: User, label: "Client", value: project.client_id }
           ].map((item) => (
             <div key={item.label} className="p-6 lg:p-10" data-testid={`info-${item.label.toLowerCase()}`}>
               <item.icon className="w-5 h-5 text-[#E11D2E] mb-4" />
@@ -116,29 +182,56 @@ export default function ProjectDetail() {
       </section>
 
       {/* Stats */}
+      {/* Stats */}
       <section className="py-24 lg:py-32 bg-[#F4F5F7] blueprint-bg">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <p className="text-overline mb-5 text-center">By The Numbers</p>
           <h2 className="font-heading text-neutral-900 text-3xl lg:text-5xl tracking-tight text-center mb-16">
             Project metrics.
           </h2>
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-            {project.stats.map((s, i) => (
-              <motion.div
-                key={s.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="text-center md:text-left border-l-0 md:border-l-2 md:border-[#E11D2E] md:pl-6"
-                data-testid={`project-stat-${i}`}
-              >
-                <div className="font-heading font-black text-neutral-900 text-4xl lg:text-6xl tracking-tight">
-                  <AnimatedCounter value={s.value} suffix={s.suffix} />
-                </div>
-                <div className="text-xs text-neutral-500 uppercase tracking-[0.18em] mt-2">{s.label}</div>
-              </motion.div>
-            ))}
+
+            {/* 1. Project Code */}
+            <div className="text-center md:text-left border-l-0 md:border-l-2 md:border-[#E11D2E] md:pl-6">
+              <div className="font-heading font-black text-neutral-900 text-3xl lg:text-5xl tracking-tight">
+                {project.project_code || "N/A"}
+              </div>
+              <div className="text-xs text-neutral-500 uppercase tracking-[0.18em] mt-2">
+                Project Code
+              </div>
+            </div>
+
+            {/* 2. Size */}
+            <div className="text-center md:text-left border-l-0 md:border-l-2 md:border-[#E11D2E] md:pl-6">
+              <div className="font-heading font-black text-neutral-900 text-3xl lg:text-5xl tracking-tight">
+                {project.size || "N/A"}
+              </div>
+              <div className="text-xs text-neutral-500 uppercase tracking-[0.18em] mt-2">
+                Size
+              </div>
+            </div>
+
+            {/* 3. Dummy */}
+            <div className="text-center md:text-left border-l-0 md:border-l-2 md:border-[#E11D2E] md:pl-6">
+              <div className="font-heading font-black text-neutral-900 text-3xl lg:text-5xl tracking-tight">
+                24/7
+              </div>
+              <div className="text-xs text-neutral-500 uppercase tracking-[0.18em] mt-2">
+                Support
+              </div>
+            </div>
+
+            {/* 4. Dummy */}
+            <div className="text-center md:text-left border-l-0 md:border-l-2 md:border-[#E11D2E] md:pl-6">
+              <div className="font-heading font-black text-neutral-900 text-3xl lg:text-5xl tracking-tight">
+                100%
+              </div>
+              <div className="text-xs text-neutral-500 uppercase tracking-[0.18em] mt-2">
+                Completion
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -146,22 +239,47 @@ export default function ProjectDetail() {
       {/* Prev / Next */}
       <section className="border-t border-neutral-200 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2">
-          <Link
-            to={`/projects/${prev.slug}`}
-            className="group p-10 lg:p-16 border-r-0 md:border-r border-b md:border-b-0 border-neutral-200 hover:bg-neutral-50 transition-colors"
-            data-testid="prev-project"
-          >
-            <p className="text-overline mb-3 flex items-center gap-2"><ArrowLeft className="w-3 h-3" /> Previous</p>
-            <p className="font-heading text-neutral-900 text-2xl lg:text-3xl group-hover:text-[#E11D2E] transition-colors">{prev.title}</p>
-          </Link>
-          <Link
-            to={`/projects/${next.slug}`}
-            className="group p-10 lg:p-16 text-right hover:bg-neutral-50 transition-colors"
-            data-testid="next-project"
-          >
-            <p className="text-overline mb-3 flex items-center gap-2 justify-end">Next <ArrowRight className="w-3 h-3" /></p>
-            <p className="font-heading text-neutral-900 text-2xl lg:text-3xl group-hover:text-[#E11D2E] transition-colors">{next.title}</p>
-          </Link>
+
+          {/* PREV */}
+          {prev ? (
+            <Link
+              to={`/projects/${prev.id}/${prev.slug}`}
+              className="group p-10 lg:p-16 border-r-0 md:border-r border-b md:border-b-0 border-neutral-200 hover:bg-neutral-50 transition-colors"
+              data-testid="prev-project"
+            >
+              <p className="text-overline mb-3 flex items-center gap-2">
+                <ArrowLeft className="w-3 h-3" /> Previous
+              </p>
+              <p className="font-heading text-neutral-900 text-2xl lg:text-3xl group-hover:text-[#E11D2E] transition-colors">
+                {prev.title}
+              </p>
+            </Link>
+          ) : (
+            <div className="p-10 lg:p-16 border-r border-neutral-200 opacity-50">
+              No Previous Project
+            </div>
+          )}
+
+          {/* NEXT */}
+          {next ? (
+            <Link
+              to={`/projects/${next.id}/${next.slug}`}
+              className="group p-10 lg:p-16 text-right hover:bg-neutral-50 transition-colors"
+              data-testid="next-project"
+            >
+              <p className="text-overline mb-3 flex items-center gap-2 justify-end">
+                Next <ArrowRight className="w-3 h-3" />
+              </p>
+              <p className="font-heading text-neutral-900 text-2xl lg:text-3xl group-hover:text-[#E11D2E] transition-colors">
+                {next.title}
+              </p>
+            </Link>
+          ) : (
+            <div className="p-10 lg:p-16 text-right opacity-50">
+              No Next Project
+            </div>
+          )}
+
         </div>
       </section>
 

@@ -62,7 +62,7 @@ export default function WhyChoose() {
                             >
 
                                 {/* DOT */}
-                                <span className="absolute -left-[42px] top-1 w-3.5 h-3.5 bg-[#E11D2E] rounded-full shadow-md ring-4 ring-white"></span>
+                                <span className="absolute -left-[48px] top-1 w-3.5 h-3.5 bg-[#E11D2E] rounded-full shadow-md ring-4 ring-white"></span>
 
                                 {/* CARD */}
                                 <div className="group">
