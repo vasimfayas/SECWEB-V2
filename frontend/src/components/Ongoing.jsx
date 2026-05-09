@@ -6,14 +6,20 @@ export default function Ongoing() {
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
+        const loadProjects = async () => {
+            try {
+                const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
 
-        fetch(`${import.meta.env.VITE_API_URL}/api/products`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
+                if (!res.ok) throw new Error("API failed");
+
+                const data = await res.json();
                 setProjects(data);
-            });
+            } catch (err) {
+                console.error(err);
+            }
+        };
 
+        loadProjects();
     }, []);
     const featured = projects.slice(0, 4);
     return (
