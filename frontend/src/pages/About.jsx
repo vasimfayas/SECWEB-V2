@@ -2,12 +2,14 @@ import { motion } from "framer-motion";
 import { Target, Eye, Heart, Award } from "lucide-react";
 import { milestones, stats } from "@/data/projects";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
+import group from "@/assets/about/group.jpg";
+import Vision from "@/components/Vision";
 
 const values = [
-  { icon: Target, title: "Precision", text: "Sub-millimeter tolerances. Zero compromise on structural integrity." },
-  { icon: Eye, title: "Transparency", text: "Real-time digital twin reporting and open-book commercial models." },
-  { icon: Heart, title: "Sustainability", text: "Whole-life carbon modeled into every decision, from sourcing to handover." },
-  { icon: Award, title: "Craftsmanship", text: "Every weld, every pour, every detail — engineered and inspected." }
+  { icon: Target, title: "Excellence", text: "Delivering superior quality and embracing innovation in every project." },
+  { icon: Eye, title: "Sustainability", text: "Building with respect for the environment and future generations." },
+  { icon: Heart, title: "Responsibility", text: "Ensuring safety, integrity, and ethical practices at all times." },
+  { icon: Award, title: "Partnership", text: "Creating long-term value through collaboration and client focus." }
 ];
 
 export default function About() {
@@ -36,128 +38,162 @@ export default function About() {
         </div>
       </section>
 
+
       {/* Story */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-7"
-          >
-            <p className="text-overline mb-5">Our Story</p>
-            <h2 className="font-heading text-neutral-900 text-3xl lg:text-5xl tracking-tight leading-[1.1] mb-8">
-              From a small civil practice in Dublin to a global design–build firm.
-            </h2>
-            <div className="space-y-6 text-neutral-600 text-base lg:text-lg leading-relaxed">
-              <p>
-                Shannon Engineering was founded in 1998 by a small group of structural engineers who believed
-                that great buildings begin with great engineering — not the other way around. From a single
-                office in Dublin, we grew steadily through reputation: bridges that lasted, towers that stood
-                straight, schedules that finished on time.
-              </p>
-              <p>
-                Today we operate across 22 countries with a team of over 4,800 engineers, project managers,
-                BIM coordinators, and craftsmen. Our integrated practice combines structural, civil, MEP and
-                sustainability engineering under one roof, allowing us to deliver complex assets with the
-                speed and certainty our clients demand.
-              </p>
-              <p>
-                Every project is led by a senior engineer-partner. Every program is digitally twinned. And
-                every asset is benchmarked against operational performance years after handover — because we
-                believe the real measure of engineering is what happens after the ribbon is cut.
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="lg:col-span-5"
-          >
-            <div className="relative aspect-[3/4] overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1694521787162-5373b598945c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwyfHxlbmdpbmVlcnMlMjB3b3JraW5nJTIwY29uc3RydWN0aW9uJTIwc2l0ZXxlbnwwfHx8fDE3Nzc4MTQ0MDZ8MA&ixlib=rb-4.1.0&q=85"
-                alt="Shannon engineers on site"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Mission / Vision */}
-      <section className="py-24 lg:py-32 bg-[#F4F5F7]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {[
-            { label: "Mission", title: "Engineer assets that outperform their lifetime.", body: "We design and build infrastructure that performs — economically, environmentally, and structurally — beyond its design life." },
-            { label: "Vision", title: "Be the most trusted design–build partner globally.", body: "By 2030, we will deliver every project net-zero in operational carbon, with zero safety incidents and zero rework." }
-          ].map((card, i) => (
-            <motion.div
-              key={card.label}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: i * 0.1 }}
-              className="bg-white p-10 lg:p-14 border border-neutral-200 hover:border-[#E11D2E]/40 transition-all duration-500 hover:-translate-y-1 shadow-sm hover:shadow-xl"
-              data-testid={`mission-vision-card-${i}`}
-            >
-              <p className="text-overline mb-6">{card.label}</p>
-              <h3 className="font-heading text-neutral-900 text-3xl lg:text-4xl tracking-tight leading-[1.1]">{card.title}</h3>
-              <p className="mt-6 text-neutral-600 leading-relaxed">{card.body}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-24 lg:py-32 relative bg-white">
+      <section className="py-24 lg:py-32 bg-[#F7F7F5] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="text-overline mb-5">Milestones</p>
-            <h2 className="font-heading text-neutral-900 text-4xl lg:text-6xl tracking-tight leading-[1.05]">
-              Twenty-six years of <span className="text-[#E11D2E]">building.</span>
-            </h2>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 text-justify items-center">
 
-          <div className="relative max-w-5xl mx-auto">
-            <div className="timeline-line" />
-            <div className="space-y-16">
-              {milestones.map((m, i) => (
+            {/* LEFT CONTENT */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9 }}
+              className="lg:col-span-5"
+            >
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1, duration: 0.7 }}
+                className="text-[11px] uppercase tracking-[0.32em] text-[#E11D2E] font-semibold mb-6"
+              >
+                MESSAGE FROM OUR CEO
+              </motion.p>
+
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 90 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="h-[2px] bg-[#E11D2E] mb-8"
+              />
+
+              <div className="space-y-6 text-neutral-600 text-[15px] lg:text-[17px] leading-[1.9]">
+                {[
+                  `I would like to start with the story of SEC which is told through our projects, our employees and our commitment to the community around us. We started as a small group of engineers who were inspired to succeed. Since those days, SEC has thrived due to what we have always believed in — our clients deserve the very best.`,
+
+                  `Our success is due to an unwavering commitment to provide our clients with their own unique opportunities to succeed. We ensure that we exceed expectations by delivering tailored solutions, dependable execution and long-term value.`,
+
+                  `We have worked hard on recruiting a professional team of engineers and technical personnel. Our team has surpassed all difficulties by staying resilient and understanding the market. We believe in strong values of honesty, integrity and work ethics.`,
+
+                  `I would like to extend my sincerest appreciation for our clients’ trust and support of SEC over the years and hereby promise to devote all our resources and capabilities to further their success through maintaining our commitment to excellence.`
+                ].map((text, i) => (
+                  <motion.p
+                    key={i}
+                    initial={{ opacity: 0, y: 25 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.15 + i * 0.1, duration: 0.7 }}
+                  >
+                    {text}
+                  </motion.p>
+                ))}
+              </div>
+
+              {/* Signature */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="mt-10 border-l-2 border-[#E11D2E] pl-5"
+              >
+                <h4 className="font-heading text-xl text-neutral-900 font-semibold">
+                  Eng. HANY ABDEL FATTAH
+                </h4>
+
+                <p className="text-sm uppercase tracking-[0.2em] text-neutral-500 mt-1">
+                  Chief Executive Officer
+                </p>
+              </motion.div>
+            </motion.div>
+
+            {/* RIGHT IMAGE */}
+            <motion.div
+              initial={{ opacity: 0, x: 60, scale: 0.96 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="lg:col-span-7"
+            >
+              <div className="relative">
+
+                {/* Accent border */}
                 <motion.div
-                  key={m.year}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.7, delay: i * 0.05 }}
-                  className={`relative flex flex-col md:flex-row gap-6 md:gap-12 items-start md:items-center pl-12 md:pl-0 ${
-                    i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
-                  data-testid={`milestone-${m.year}`}
-                >
-                  <div className="absolute left-[14px] md:left-1/2 md:-translate-x-1/2 w-3 h-3 bg-[#E11D2E] rounded-full ring-4 ring-white"></div>
-                  <div className="md:w-1/2 md:px-12">
-                    <div className="font-heading font-black text-[#E11D2E] text-5xl lg:text-7xl tracking-tight">{m.year}</div>
-                    <h3 className="font-heading text-neutral-900 text-2xl mt-3">{m.title}</h3>
-                    <p className="text-neutral-600 mt-3 leading-relaxed">{m.description}</p>
-                  </div>
-                  <div className="md:w-1/2"></div>
-                </motion.div>
-              ))}
-            </div>
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2, duration: 1 }}
+                  className="absolute -top-5 -left-5 w-full h-full border border-[#E11D2E]/20"
+                />
+
+                {/* Image wrapper */}
+                <div className="relative overflow-hidden shadow-[0_25px_80px_rgba(0,0,0,0.18)] bg-white">
+
+                  <motion.img
+                    src={group}
+                    alt="SEC Team"
+                    initial={{ scale: 1.08 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.4 }}
+                    className="w-full h-auto object-contain"
+                  />
+
+                  {/* soft overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"></div>
+
+                  {/* Floating card */}
+                  {/* Floating card */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    className="absolute bottom-6 left-6 bg-white/92 backdrop-blur-md px-6 py-4 shadow-2xl border-l-2 border-[#E11D2E]"
+                  >
+                    <div className="flex items-center gap-5">
+
+                      <div>
+                        <h3 className="font-heading text-3xl lg:text-4xl font-black text-neutral-900 leading-none">
+                          25+
+                        </h3>
+
+                        <p className="text-[10px] uppercase tracking-[0.25em] text-neutral-500 mt-1">
+                          Years
+                        </p>
+                      </div>
+
+                      <div className="w-px h-12 bg-neutral-300"></div>
+
+                      <div>
+                        <p className="font-heading text-base lg:text-lg text-neutral-900 leading-snug max-w-[220px]">
+                          Delivering trusted engineering and construction excellence.
+                        </p>
+                      </div>
+
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </section>
+
+      {/* Vision */}
+
+      <Vision ></Vision>
 
       {/* Values */}
       <section className="py-24 lg:py-32 bg-[#F4F5F7] blueprint-bg">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <p className="text-overline mb-5">Our Values</p>
           <h2 className="font-heading text-neutral-900 text-4xl lg:text-6xl tracking-tight leading-[1.05] max-w-3xl">
-            Four principles that guide every project.
+            Built on trust, driven by excellence
           </h2>
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200">

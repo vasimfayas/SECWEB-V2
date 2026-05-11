@@ -12,7 +12,7 @@ import hero4 from "@/assets/home/hero4.webp";
 import hero5 from "@/assets/home/hero5.webp";
 import hero6 from "@/assets/home/hero6.jpeg";
 import WhyChooses from "@/components/WhyChooseUs";
-import Apitest from "@/components/Ongoing";
+import Ongoing from "@/components/Ongoing";
 
 const ICONS = { Building2, Home: HomeIcon, Construction, HardHat, Ruler, Leaf };
 
@@ -64,8 +64,8 @@ export default function Home() {
           </AnimatePresence>
         </div>
 
-        {/* DARK OVERLAY */}
-        <div className="absolute inset-0 hero-scrim z-10"></div>
+        {/* DARK OVERLAY
+        <div className="absolute inset-0 hero-scrim z-10"></div> */}
 
         {/* GRAIN */}
         <div className="absolute inset-0 grain-overlay z-10 pointer-events-none"></div>
@@ -278,7 +278,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Apitest ></Apitest>
+      <Ongoing ></Ongoing>
 
       <WhyChooses ></WhyChooses>
       {/* CTA (light with red accent) */}

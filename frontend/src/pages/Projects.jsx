@@ -132,7 +132,7 @@ export default function Projects() {
                     <div className="absolute inset-0 project-card-overlay" />
                     <div className="absolute top-5 left-5">
                       <span className="text-[10px] tracking-[0.3em] uppercase text-white font-heading font-semibold border border-white/40 px-3 py-1 bg-black/30 backdrop-blur-sm">
-                        {p.category_id}
+                        {p.category?.category}
                       </span>
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white">

@@ -84,8 +84,9 @@ export default function ProjectDetail() {
 
   const gallery =
     project.images?.length > 0
-      ? project.images
+      ? project.images.map((img) => img.image_path)
       : [project.card_img];
+  console.log(gallery);
 
   return (
     <div className="bg-white">
@@ -138,7 +139,7 @@ export default function ProjectDetail() {
                   }`}
                 data-testid={`gallery-thumb-${i}`}
               >
-                <img src={g} alt={`thumb-${i}`} className="w-full h-full object-cover" />
+                <img src={`${import.meta.env.VITE_API_URL}/storage/${g}`} alt={`thumb-${i}`} className="w-full h-full object-cover" />
               </button>
             ))}
           </div>
@@ -150,14 +151,44 @@ export default function ProjectDetail() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 divide-x divide-neutral-200">
           {[
             { icon: MapPin, label: "Location", value: project.location },
-            { icon: Calendar, label: "Year", value: project.completed_year },
-            { icon: Briefcase, label: "Scope", value: project.completed_year },
-            { icon: User, label: "Client", value: project.client_id }
+            { icon: Calendar, label: "Completed Year", value: project.completed_year },
+            { icon: Briefcase, label: "Consultant", value: '' },
+            { icon: User, label: "Client", value: '' }
           ].map((item) => (
             <div key={item.label} className="p-6 lg:p-10" data-testid={`info-${item.label.toLowerCase()}`}>
               <item.icon className="w-5 h-5 text-[#E11D2E] mb-4" />
               <p className="text-overline mb-2">{item.label}</p>
               <p className="text-neutral-900 text-sm lg:text-base font-medium leading-snug">{item.value}</p>
+              {/* CLIENT IMAGE */}
+
+              {item.label === "Client" && project.client?.img && (
+
+                <img
+
+                  src={`${import.meta.env.VITE_API_URL}/storage/${project.client.img}`}
+
+                  alt={project.client.name}
+
+                  className="mt-4 h-12 object-contain"
+
+                />
+
+              )}
+              {/* CLIENT IMAGE */}
+
+              {item.label === "Consultant" && project.consultant?.img && (
+
+                <img
+
+                  src={`${import.meta.env.VITE_API_URL}/storage/${project.consultant.img}`}
+
+                  alt={project.consultant.name}
+
+                  className="mt-4 h-12 object-contain"
+
+                />
+
+              )}
             </div>
           ))}
         </div>
@@ -215,10 +246,10 @@ export default function ProjectDetail() {
             {/* 3. Dummy */}
             <div className="text-center md:text-left border-l-0 md:border-l-2 md:border-[#E11D2E] md:pl-6">
               <div className="font-heading font-black text-neutral-900 text-3xl lg:text-5xl tracking-tight">
-                24/7
+                {project.duration || 0} Days
               </div>
               <div className="text-xs text-neutral-500 uppercase tracking-[0.18em] mt-2">
-                Support
+                Duration
               </div>
             </div>
 

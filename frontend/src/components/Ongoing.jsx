@@ -34,7 +34,7 @@ export default function Ongoing() {
                         </h2>
                     </div>
                     <Link
-                        to="/projects"
+                        to="/projects/"
                         className="inline-flex items-center gap-2 text-neutral-700 hover:text-[#E11D2E] font-heading uppercase text-sm tracking-[0.2em]"
                         data-testid="home-projects-cta"
                     >
@@ -53,7 +53,7 @@ export default function Ongoing() {
                             className={i % 3 === 0 ? "md:col-span-2" : ""}
                         >
                             <Link
-                                to={`/projects/`}
+                                to={`/projects/${p.id}/${p.slug}`}
                                 className="project-card relative block overflow-hidden aspect-[16/10] group"
                                 data-testid={`featured-project`}
                             >
